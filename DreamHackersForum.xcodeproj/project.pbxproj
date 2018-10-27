@@ -8,20 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		95084DCE2184033C00966399 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95084DCD2184033C00966399 /* AppDelegate.swift */; };
-		95084DD02184033C00966399 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95084DCF2184033C00966399 /* ViewController.swift */; };
 		95084DD32184033C00966399 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95084DD12184033C00966399 /* Main.storyboard */; };
 		95084DD52184033E00966399 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95084DD42184033E00966399 /* Assets.xcassets */; };
 		95084DD82184033E00966399 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95084DD62184033E00966399 /* LaunchScreen.storyboard */; };
+		95084DE3218403C200966399 /* Forum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95084DE2218403C200966399 /* Forum.swift */; };
+		95084DE521844AF100966399 /* MainForumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95084DE421844AF100966399 /* MainForumTableViewController.swift */; };
+		95084DE721844CA300966399 /* MainForumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95084DE621844CA300966399 /* MainForumTableViewCell.swift */; };
+		95084DEA21844CB500966399 /* MainForumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95084DE921844CB500966399 /* MainForumCell.xib */; };
+		BE456F35028185F2C7DB023E /* Pods_DreamHackersForum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DE46AED710B5C3CD8B1A48 /* Pods_DreamHackersForum.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F25BDB8DFC24872380F5D31 /* Pods-DreamHackersForum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamHackersForum.release.xcconfig"; path = "Pods/Target Support Files/Pods-DreamHackersForum/Pods-DreamHackersForum.release.xcconfig"; sourceTree = "<group>"; };
+		375DFA19E02B7A1B8198DCE1 /* Pods-DreamHackersForum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamHackersForum.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DreamHackersForum/Pods-DreamHackersForum.debug.xcconfig"; sourceTree = "<group>"; };
+		94DE46AED710B5C3CD8B1A48 /* Pods_DreamHackersForum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DreamHackersForum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95084DCA2184033C00966399 /* DreamHackersForum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamHackersForum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95084DCD2184033C00966399 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		95084DCF2184033C00966399 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		95084DD22184033C00966399 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		95084DD42184033E00966399 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95084DD72184033E00966399 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95084DD92184033E00966399 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95084DE2218403C200966399 /* Forum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forum.swift; sourceTree = "<group>"; };
+		95084DE421844AF100966399 /* MainForumTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainForumTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		95084DE621844CA300966399 /* MainForumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainForumTableViewCell.swift; sourceTree = "<group>"; };
+		95084DE921844CB500966399 /* MainForumCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainForumCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE456F35028185F2C7DB023E /* Pods_DreamHackersForum.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +51,8 @@
 			children = (
 				95084DCC2184033C00966399 /* DreamHackersForum */,
 				95084DCB2184033C00966399 /* Products */,
+				B630808B48177F4523FCC3CC /* Pods */,
+				F4D28CDE9007A1A45BFC5073 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +67,66 @@
 		95084DCC2184033C00966399 /* DreamHackersForum */ = {
 			isa = PBXGroup;
 			children = (
+				95084DDF2184039300966399 /* Model */,
+				95084DE1218403A300966399 /* View */,
+				95084DE02184039700966399 /* SupportedFiles */,
 				95084DCD2184033C00966399 /* AppDelegate.swift */,
-				95084DCF2184033C00966399 /* ViewController.swift */,
 				95084DD12184033C00966399 /* Main.storyboard */,
-				95084DD42184033E00966399 /* Assets.xcassets */,
-				95084DD62184033E00966399 /* LaunchScreen.storyboard */,
 				95084DD92184033E00966399 /* Info.plist */,
 			);
 			path = DreamHackersForum;
+			sourceTree = "<group>";
+		};
+		95084DDF2184039300966399 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				95084DE2218403C200966399 /* Forum.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		95084DE02184039700966399 /* SupportedFiles */ = {
+			isa = PBXGroup;
+			children = (
+				95084DD42184033E00966399 /* Assets.xcassets */,
+				95084DD62184033E00966399 /* LaunchScreen.storyboard */,
+			);
+			path = SupportedFiles;
+			sourceTree = "<group>";
+		};
+		95084DE1218403A300966399 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				95084DE821844CA600966399 /* Cell */,
+				95084DE421844AF100966399 /* MainForumTableViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		95084DE821844CA600966399 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				95084DE621844CA300966399 /* MainForumTableViewCell.swift */,
+				95084DE921844CB500966399 /* MainForumCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		B630808B48177F4523FCC3CC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				375DFA19E02B7A1B8198DCE1 /* Pods-DreamHackersForum.debug.xcconfig */,
+				0F25BDB8DFC24872380F5D31 /* Pods-DreamHackersForum.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F4D28CDE9007A1A45BFC5073 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				94DE46AED710B5C3CD8B1A48 /* Pods_DreamHackersForum.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +136,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95084DDC2184033E00966399 /* Build configuration list for PBXNativeTarget "DreamHackersForum" */;
 			buildPhases = (
+				86908964255CB009DC8F2B4B /* [CP] Check Pods Manifest.lock */,
 				95084DC62184033C00966399 /* Sources */,
 				95084DC72184033C00966399 /* Frameworks */,
 				95084DC82184033C00966399 /* Resources */,
+				85B44E24F7BD0C6EEFFFB731 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -122,6 +189,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95084DEA21844CB500966399 /* MainForumCell.xib in Resources */,
 				95084DD82184033E00966399 /* LaunchScreen.storyboard in Resources */,
 				95084DD52184033E00966399 /* Assets.xcassets in Resources */,
 				95084DD32184033C00966399 /* Main.storyboard in Resources */,
@@ -130,13 +198,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		85B44E24F7BD0C6EEFFFB731 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DreamHackersForum/Pods-DreamHackersForum-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DreamHackersForum/Pods-DreamHackersForum-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		86908964255CB009DC8F2B4B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DreamHackersForum-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		95084DC62184033C00966399 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95084DD02184033C00966399 /* ViewController.swift in Sources */,
+				95084DE721844CA300966399 /* MainForumTableViewCell.swift in Sources */,
+				95084DE521844AF100966399 /* MainForumTableViewController.swift in Sources */,
 				95084DCE2184033C00966399 /* AppDelegate.swift in Sources */,
+				95084DE3218403C200966399 /* Forum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +389,7 @@
 		};
 		95084DDD2184033E00966399 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 375DFA19E02B7A1B8198DCE1 /* Pods-DreamHackersForum.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +408,7 @@
 		};
 		95084DDE2184033E00966399 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F25BDB8DFC24872380F5D31 /* Pods-DreamHackersForum.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

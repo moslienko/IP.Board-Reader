@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MainForumTableViewCell" customModule="DreamHackersForum" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHp-pE-qcQ">
+                    <rect key="frame" x="276" y="17" width="91" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="91" id="22s-BM-Y22"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHR-w3-aeQ">
+                    <rect key="frame" x="16" y="17" width="271" height="20"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KHR-w3-aeQ" secondAttribute="trailing" constant="88" id="8UW-pz-Wv2"/>
+                <constraint firstItem="KHR-w3-aeQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="Jy0-QT-v1c"/>
+                <constraint firstItem="KHR-w3-aeQ" firstAttribute="centerY" secondItem="dHp-pE-qcQ" secondAttribute="centerY" id="ddU-Ju-g6w"/>
+                <constraint firstItem="KHR-w3-aeQ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="17" id="eu1-cI-hYo"/>
+                <constraint firstItem="dHp-pE-qcQ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="mo8-ZV-mAR"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dHp-pE-qcQ" secondAttribute="trailing" constant="8" id="sgV-zV-Mpo"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="countTopicMsg" destination="dHp-pE-qcQ" id="3Ok-KC-SCD"/>
+                <outlet property="forumTopicTitle" destination="KHR-w3-aeQ" id="gvQ-ZL-bU8"/>
+            </connections>
+            <point key="canvasLocation" x="136.80000000000001" y="248.27586206896552"/>
+        </view>
+    </objects>
+</document>
