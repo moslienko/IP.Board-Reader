@@ -13,4 +13,8 @@ class MainForumTableViewCell: UITableViewCell {
     @IBOutlet weak var forumTopicTitle: UILabel!
     @IBOutlet weak var countTopicMsg: UILabel!
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+    
 }

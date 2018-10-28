@@ -15,6 +15,10 @@
 		95084DE521844AF100966399 /* MainForumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95084DE421844AF100966399 /* MainForumTableViewController.swift */; };
 		95084DE721844CA300966399 /* MainForumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95084DE621844CA300966399 /* MainForumTableViewCell.swift */; };
 		95084DEA21844CB500966399 /* MainForumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95084DE921844CB500966399 /* MainForumCell.xib */; };
+		95668F8E21855B190009B99A /* SubForumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95668F8D21855B190009B99A /* SubForumTableViewController.swift */; };
+		95668F90218571C70009B99A /* TopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95668F8F218571C70009B99A /* TopicCell.xib */; };
+		95668F922185727A0009B99A /* TopicCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95668F912185727A0009B99A /* TopicCellTableViewCell.swift */; };
+		95668F94218575720009B99A /* TopicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95668F93218575720009B99A /* TopicTableViewController.swift */; };
 		BE456F35028185F2C7DB023E /* Pods_DreamHackersForum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DE46AED710B5C3CD8B1A48 /* Pods_DreamHackersForum.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +36,10 @@
 		95084DE421844AF100966399 /* MainForumTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainForumTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		95084DE621844CA300966399 /* MainForumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainForumTableViewCell.swift; sourceTree = "<group>"; };
 		95084DE921844CB500966399 /* MainForumCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainForumCell.xib; sourceTree = "<group>"; };
+		95668F8D21855B190009B99A /* SubForumTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubForumTableViewController.swift; sourceTree = "<group>"; };
+		95668F8F218571C70009B99A /* TopicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicCell.xib; sourceTree = "<group>"; };
+		95668F912185727A0009B99A /* TopicCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCellTableViewCell.swift; sourceTree = "<group>"; };
+		95668F93218575720009B99A /* TopicTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,8 @@
 			children = (
 				95084DE821844CA600966399 /* Cell */,
 				95084DE421844AF100966399 /* MainForumTableViewController.swift */,
+				95668F8D21855B190009B99A /* SubForumTableViewController.swift */,
+				95668F93218575720009B99A /* TopicTableViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -108,6 +118,8 @@
 			children = (
 				95084DE621844CA300966399 /* MainForumTableViewCell.swift */,
 				95084DE921844CB500966399 /* MainForumCell.xib */,
+				95668F8F218571C70009B99A /* TopicCell.xib */,
+				95668F912185727A0009B99A /* TopicCellTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -191,6 +203,7 @@
 			files = (
 				95084DEA21844CB500966399 /* MainForumCell.xib in Resources */,
 				95084DD82184033E00966399 /* LaunchScreen.storyboard in Resources */,
+				95668F90218571C70009B99A /* TopicCell.xib in Resources */,
 				95084DD52184033E00966399 /* Assets.xcassets in Resources */,
 				95084DD32184033C00966399 /* Main.storyboard in Resources */,
 			);
@@ -244,8 +257,11 @@
 			files = (
 				95084DE721844CA300966399 /* MainForumTableViewCell.swift in Sources */,
 				95084DE521844AF100966399 /* MainForumTableViewController.swift in Sources */,
+				95668F94218575720009B99A /* TopicTableViewController.swift in Sources */,
 				95084DCE2184033C00966399 /* AppDelegate.swift in Sources */,
+				95668F8E21855B190009B99A /* SubForumTableViewController.swift in Sources */,
 				95084DE3218403C200966399 /* Forum.swift in Sources */,
+				95668F922185727A0009B99A /* TopicCellTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TopicCellTableViewCell" customModule="DreamHackersForum" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="168"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n68-YY-Tio">
+                    <rect key="frame" x="16" y="7" width="186" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="186" id="3VG-OG-7OZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01.1.2018, 12:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNI-XN-9pd">
+                    <rect key="frame" x="242" y="7" width="123" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lx5-v9-Cgs">
+                    <rect key="frame" x="16" y="36" width="349" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Lx5-v9-Cgs" secondAttribute="bottom" constant="4" id="12y-ro-kW0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Lx5-v9-Cgs" secondAttribute="bottom" constant="4" id="4AW-iu-AvQ"/>
+                <constraint firstItem="n68-YY-Tio" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="Cgl-xC-Xkp"/>
+                <constraint firstItem="n68-YY-Tio" firstAttribute="baseline" secondItem="qNI-XN-9pd" secondAttribute="baseline" id="HoC-WY-VGg"/>
+                <constraint firstItem="qNI-XN-9pd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="7" id="K9B-dD-zUb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Lx5-v9-Cgs" secondAttribute="trailing" constant="10" id="Q85-pI-U88"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Lx5-v9-Cgs" secondAttribute="trailing" constant="10" id="TSf-GN-YFe"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Lx5-v9-Cgs" secondAttribute="bottom" constant="4" id="ZAS-5h-bJT"/>
+                <constraint firstItem="n68-YY-Tio" firstAttribute="leading" secondItem="Lx5-v9-Cgs" secondAttribute="leading" id="eac-EM-27Z"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Lx5-v9-Cgs" secondAttribute="trailing" constant="10" id="g1C-U5-Ozi"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qNI-XN-9pd" secondAttribute="trailing" constant="10" id="mpu-B4-n8h"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Lx5-v9-Cgs" secondAttribute="bottom" constant="4" id="n6J-go-X4u"/>
+                <constraint firstItem="Lx5-v9-Cgs" firstAttribute="top" secondItem="n68-YY-Tio" secondAttribute="bottom" constant="8" id="sNg-4R-y7p"/>
+                <constraint firstItem="Lx5-v9-Cgs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="wL5-Gm-aB5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Lx5-v9-Cgs" secondAttribute="bottom" constant="4" id="ysw-Oy-cxL"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="date" destination="qNI-XN-9pd" id="lLJ-9I-QLT"/>
+                <outlet property="message" destination="Lx5-v9-Cgs" id="uBY-z9-kZD"/>
+                <outlet property="username" destination="n68-YY-Tio" id="aK3-ar-GNx"/>
+            </connections>
+            <point key="canvasLocation" x="84" y="226.6866566716642"/>
+        </view>
+    </objects>
+</document>
