@@ -21,10 +21,11 @@ class SubForumTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         let nib = UINib.init(nibName: "MainForumCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: cellID)
         
+        print (subForumSeque)
+
         if subForumSeque.params.count > 0 {
             self.navigationItem.title = subForumSeque.params[0].title
             let url = subForumSeque.params[0].url
