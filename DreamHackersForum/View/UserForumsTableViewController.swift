@@ -23,9 +23,12 @@ class UserForumsTableViewController: UITableViewController {
         let nib = UINib.init(nibName: "ForumCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: reuseIdentifier)
         self.tableView.rowHeight = 110
-        self.userForums = getUserForums()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.userForums = getUserForums()
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -62,7 +65,7 @@ class UserForumsTableViewController: UITableViewController {
                     let siteName = getSiteName(url: url!)
                     
                     if isIPBoardSite(url: url!){
-                        if saveForum(forumData: UserForum(id: randomID(10) as String, name: siteName, url: URL(string: url!)!)) {
+                        if saveForum(forumData: UserForum(id: randomID(10) as String, name: siteName, url: url!)) {
                             self.userForums = getUserForums()
                         }
                     }
@@ -92,45 +95,13 @@ class UserForumsTableViewController: UITableViewController {
             if let indexPath = tableView.indexPathForSelectedRow{
                 let clickCellData = self.userForums[indexPath.row]
                 
-                if let destinationVC = segue.destination as? MainForumTableViewController {
-                    destinationVC.forumInfo = [clickCellData]
+                if segue.destination is MainForumTableViewController {
+                    CurrentForum.shared.url = clickCellData.url
+                    CurrentForum.shared.id = clickCellData.id
+                    CurrentForum.shared.name = clickCellData.name
                 }
             }
         }
     }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 }

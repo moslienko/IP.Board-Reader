@@ -9,6 +9,18 @@
 import Foundation
 import SwiftSoup
 
+extension String {
+    var isValidURL: Bool {
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        if let match = detector.firstMatch(in: self, options: [], range: NSRange(location: 0, length: self.endIndex.encodedOffset)) {
+            // it is a link, if the match covers the whole string
+            return match.range.length == self.endIndex.encodedOffset
+        } else {
+            return false
+        }
+    }
+}
+
 //Темы форума
 typealias topicData = (title: String, url: String, count: String)
 //Колечество страниц
@@ -43,42 +55,54 @@ func getMainForumTopics() -> (menu:[String], submenu:[[Any]]) {
     var menuInside = [[topicData]]()
 
     do {
+        let url = "http://\(CurrentForum.shared.url)"
         
-            let html = getHTMLContent(url: "http://forum.dreamhackers.org/lofiversion/index.php")
+        let html = getHTMLContent(url: "\(String(describing: url))/lofiversion/index.php")
+        
+        print ("page:","\(String(describing: url))/lofiversion/index.php")
         
             let doc: Document = try SwiftSoup.parse(html)
-            let menuDiv: Element = try doc.select("div.forumwrap").first()!
-            
-            let menuDivElementLi: Elements = try menuDiv.select("li")
-            
-            let menuStrong: Elements = try menuDiv.select("strong")
-        
-            for _ in menuStrong {
-                menuInside.append([])
-            }
+            let menuDivs: Elements = try doc.select("div.forumwrap")
 
-            for i in menuDivElementLi.enumerated() {
-                let tag = i.element.child(0).tag().getName()
+            if  menuDivs.array().count > 0 {
                 
-                if tag == "strong" {
-                    menu.append(try i.element.child(0).text())
-                }
-                else {
-                    if tag != "ul" {
+                let menuDiv:Element = menuDivs.first()!
+                let menuDivElementLi: Elements = try menuDiv.select("li")
 
-                            let count = menu.count - 1
-                            
-                            menuInside[count].append(
-                                topicData( title: try i.element.child(0).text(),
-                                            url: try i.element.child(0).attr("href"),
-                                            count: try i.element.child(1).text())
-                            )
-
+                let menuStrong: Elements = try menuDiv.select("strong")
+            
+                for _ in menuStrong {
+                    menuInside.append([])
+                    print ("menuInside:",menuInside)
+                    for i in menuDivElementLi.enumerated() {
+                        let tag = i.element.child(0).tag().getName()
+                        
+                        if tag == "strong" {
+                            menu.append(try i.element.child(0).text())
+                        }
+                        else {
+                            if tag != "ul" {
+                                
+                                let count = menu.count - 1
+                                
+                                if menuInside.indices.contains(count) {
+                                    menuInside[count].append(
+                                        topicData( title: try i.element.child(0).text(),
+                                                   url: try i.element.child(0).attr("href"),
+                                                   count: try i.element.child(1).text()
+                                        ))
+                                }
+                               
+                                
+                            }
+                        }
+                        
                     }
+                    return (menu:menu, submenu:menuInside)
                 }
-
+                
+                
             }
-            return (menu:menu, submenu:menuInside)
 
     } catch Exception.Error( _, let message) {
         print(message)
@@ -131,6 +155,7 @@ func getSubTopics(url:String) -> [topicData] {
  - Returns: Массив со списком сообщений в теме
  */
 func getTopic(url:String) -> [topicMsg] {
+    let fs = FontSize()
     var menu = [topicMsg]()
     
     do {
@@ -155,7 +180,7 @@ func getTopic(url:String) -> [topicMsg] {
                 topicMsg(
                     username: try (topBar?.child(0).text())!,
                     date: try (topBar?.child(1).text())!,
-                    message: "<div style=\"font-size: 17px\">\(content)</div>"
+                    message: "<div style=\"font-size: \(fs.getCurrentSize())\">\(content)</div>"
                     //message: try (messageContent?.text())!
             ))
             
@@ -208,4 +233,66 @@ func getTopicsPageList(urlTopic:String) -> [pageCount] {
         print("error")
     }
     return pages
+}
+
+/**
+ Проверка, работает ли сайт на IP.Board
+ - Parameter url: URL сайта
+ - Returns: Результат проверки
+ */
+func isIPBoardSite(url:String) -> Bool {
+    let html = getHTMLContent(url: url)
+    
+    do {
+        let doc: Document = try SwiftSoup.parse(html)
+
+        let copyright: Elements = try doc.select("div.copyright")
+        if copyright.array().count > 0 {
+            let info: Elements = try copyright.first()!.select("a")
+            if info.array().count > 1 {
+                let label = try info.array()[1].text()
+                if label == "IP.Board" {
+                    return true
+                }
+            }
+        }
+
+        return false
+
+    } catch Exception.Error( _, let message) {
+        print(message)
+        return false
+    } catch {
+        print("error")
+        return false
+    }
+}
+
+/**
+ Получить название сайта
+ - Parameter url: URL сайта
+ - Returns: Название
+ */
+func getSiteName(url:String) -> String {
+    let defaultName = "My forum"
+    
+    let html = getHTMLContent(url: url)
+    
+    do {
+        let doc: Document = try SwiftSoup.parse(html)
+        
+        let title: Elements = try doc.select("title")
+        if title.first() != nil {
+            return try title.text()
+        }
+        
+        return defaultName
+        
+    } catch Exception.Error( _, let message) {
+        print(message)
+        return defaultName
+    } catch {
+        print("error")
+        return defaultName
+    }
 }

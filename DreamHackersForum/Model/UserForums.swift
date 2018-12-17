@@ -13,9 +13,9 @@ import CoreData
 struct UserForum {
     var id:String
     var name:String
-    var url: URL
+    var url:String
     
-    init(id:String,name:String,url:URL) {
+    init(id:String,name:String,url:String) {
         self.id = id
         self.name = name
         self.url = url
@@ -58,7 +58,7 @@ func getUserForums() -> [UserForum]{
             forum.append(UserForum(
                 id: data.value(forKey: "id") as! String,
                 name: data.value(forKey: "name") as! String,
-                url: data.value(forKey: "url") as! URL
+                url: data.value(forKey: "url") as! String
             ))
         }
         
@@ -83,9 +83,12 @@ func saveForum(forumData:UserForum) -> Bool{
     let userEntity = NSEntityDescription.entity(forEntityName: "UserForums", in: managedContext)!
     
     let book = NSManagedObject(entity: userEntity, insertInto: managedContext)
+    
+    let url = URL(string: forumData.url)?.host
+    
     book.setValue(forumData.id, forKeyPath: "id")
     book.setValue(forumData.name, forKeyPath: "name")
-    book.setValue(forumData.url, forKeyPath: "url")
+    book.setValue(url, forKeyPath: "url")
     
     do {
         try managedContext.save()
@@ -155,8 +158,6 @@ func deleteForum(id:String) ->Bool{
         if forum.count > 0 {
             let objectToDelete = forum[0] as! NSManagedObject
             managedContext.delete(objectToDelete)
-            //todo удалить избранные темы форума
-            
             do{
                 try managedContext.save()
                 return true
