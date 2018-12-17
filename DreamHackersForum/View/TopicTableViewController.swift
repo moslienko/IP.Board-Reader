@@ -16,6 +16,13 @@ class TopicTableViewController: UITableViewController {
     var messages = [topicMsg]()
     var pages = [pageCount]()
 
+    @IBOutlet weak var addFavoriteButton: UIBarButtonItem!
+    
+    enum favoriteImg:String {
+        case alreadyFav = "favorites"
+        case noFav = "favorites_full"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +40,10 @@ class TopicTableViewController: UITableViewController {
             messages = getTopic(url: topic[0].url)
             
             self.tableView.reloadData()
+            
+            if isThemeAlreadyFavorite(url: topic[0].url) {
+                addFavoriteButton.image = UIImage(named: favoriteImg.alreadyFav.rawValue)
+            }
         }
         
         
@@ -93,6 +104,37 @@ class TopicTableViewController: UITableViewController {
         cell.message?.attributedText = attrStr
         
         return cell
+    }
+    
+    @IBAction func addToFavoriteClick(_ sender: UIBarButtonItem) {
+        if self.topic.count > 0 {
+            //Проверка
+            let url = self.topic[0].url
+            
+            if isThemeAlreadyFavorite(url: url) {
+                //Убрать
+                if deleteFavoriteTheme(url: url) {
+                    addFavoriteButton.image = UIImage(named: favoriteImg.noFav.rawValue)
+                }
+                else {
+                    print ("error delete from favorite")
+                }
+            }
+            else {
+                //Сохранить
+                if addThemeToFavorite(themeData: FavoriteTheme(
+                    forumID: "todo",
+                    id: randomID(10) as String,
+                    name: self.topic[0].title,
+                    url: url
+                )) {
+                    addFavoriteButton.image = UIImage(named: favoriteImg.alreadyFav.rawValue)
+                }
+                else {
+                    print ("error save favorite")
+                }
+            }
+        }
     }
     
     @IBAction func openPageInBrowser(_ sender: UIBarButtonItem) {
