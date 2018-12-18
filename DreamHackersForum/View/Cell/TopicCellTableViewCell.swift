@@ -14,4 +14,8 @@ class TopicCellTableViewCell: UITableViewCell {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var message: UITextView!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
 }
