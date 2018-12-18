@@ -19,8 +19,8 @@ class TopicTableViewController: UITableViewController {
     @IBOutlet weak var addFavoriteButton: UIBarButtonItem!
     
     enum favoriteImg:String {
-        case alreadyFav = "favorites"
-        case noFav = "favorites_full"
+        case alreadyFav = "favorites_full"
+        case noFav = "favorites"
     }
     
     override func viewDidLoad() {
@@ -38,7 +38,6 @@ class TopicTableViewController: UITableViewController {
             pages = getTopicsPageList(urlTopic: topic[0].url)
 
             messages = getTopic(url: topic[0].url)
-            
             self.tableView.reloadData()
             
             if isThemeAlreadyFavorite(url: topic[0].url) {
@@ -123,12 +122,13 @@ class TopicTableViewController: UITableViewController {
             else {
                 //Сохранить
                 if addThemeToFavorite(themeData: FavoriteTheme(
-                    forumID: "todo",
+                    forumID: CurrentForum.shared.id,
                     id: randomID(10) as String,
                     name: self.topic[0].title,
                     url: url
                 )) {
                     addFavoriteButton.image = UIImage(named: favoriteImg.alreadyFav.rawValue)
+                    print ("save ok")
                 }
                 else {
                     print ("error save favorite")

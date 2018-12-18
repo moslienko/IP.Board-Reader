@@ -77,7 +77,7 @@ func addThemeToFavorite(themeData:FavoriteTheme) -> Bool{
     theme.setValue(themeData.id, forKeyPath: "id")
     theme.setValue(themeData.name, forKeyPath: "name")
     theme.setValue(themeData.url, forKeyPath: "url")
-    
+    print ("theme:",theme)
     do {
         try managedContext.save()
         return true
@@ -97,7 +97,7 @@ func deleteFavoriteTheme(url:String) ->Bool{
     let managedContext = appDelegate.persistentContainer.viewContext
     
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteThemes")
-    fetchRequest.predicate = NSPredicate(format: "url = %@", URL(string: url)! as CVarArg)
+    fetchRequest.predicate = NSPredicate(format: "url = %@", url)
     
     do
     {
@@ -127,26 +127,23 @@ func deleteFavoriteTheme(url:String) ->Bool{
  Проверка, сохранена ли такая тема в избранное
  - Parameter url: URL темы
  */
-func isThemeAlreadyFavorite(url:String) ->Bool{
+func isThemeAlreadyFavorite(url:String) -> Bool{
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false}
     let managedContext = appDelegate.persistentContainer.viewContext
     
-    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteThemes")
-    fetchRequest.predicate = NSPredicate(format: "url = %@", URL(string: url)! as CVarArg)
+    let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavoriteThemes")
+    fetchRequest.predicate = NSPredicate(format: "url = %@", url)
     
-    do
-    {
-        let theme = try managedContext.fetch(fetchRequest)
-        if theme.count > 0 {
-            return true
+        do {
+            let count  = try managedContext.count(for: fetchRequest)
+            return count > 0
         }
-    }
-    catch
-    {
-        print(error)
-    }
-    return false
+        catch {
+            print("Error: \(error)")
+            return false
+        }
 }
+
 
 /**
  Удалить все избранные темы форума
