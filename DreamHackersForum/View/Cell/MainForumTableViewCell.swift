@@ -8,6 +8,17 @@
 
 import UIKit
 
+extension MainForumTableViewCell {
+    func applyTheme() {
+        let themeManager = ThemeManager()
+        if themeManager.currentTheme() == .dark {
+            self.backgroundColor = UIColor.black
+            self.forumTopicTitle.textColor = UIColor.white
+            self.countTopicMsg.textColor = UIColor.gray
+        }
+    }
+}
+
 class MainForumTableViewCell: UITableViewCell {
 
     @IBOutlet weak var forumTopicTitle: UILabel!
@@ -15,6 +26,7 @@ class MainForumTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.applyTheme()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

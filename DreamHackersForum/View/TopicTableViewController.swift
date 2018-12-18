@@ -32,6 +32,8 @@ class TopicTableViewController: UITableViewController {
         self.tableView.estimatedRowHeight = 44
         self.tableView.rowHeight = UITableView.automaticDimension
         
+        self.applyTheme()
+
         if topic.count > 0 {
             self.navigationItem.title = topic[0].title
             
@@ -56,6 +58,7 @@ class TopicTableViewController: UITableViewController {
             toolbarItems = toolbarPages
             
             navigationController?.setToolbarHidden(false, animated: true)
+            self.navigationController?.toolbar.applyTheme()
         }
         else {
             navigationController?.setToolbarHidden(true, animated: true)

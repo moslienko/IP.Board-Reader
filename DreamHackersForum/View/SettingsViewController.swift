@@ -10,6 +10,7 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
 
+    let theme = ThemeManager()
     let fs = FontSize()
 
     @IBOutlet weak var switchTheme: UISwitch!
@@ -19,12 +20,12 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //Тема
-//        if ThemeManager.currentTheme() == .theme2 {
-//            switchTheme.isOn = true
-//        }
-//        else {
-//            switchTheme.isOn = false
-//        }
+        if self.theme.currentTheme() == colorTheme.dark {
+            switchTheme.isOn = true
+        }
+        else {
+            switchTheme.isOn = false
+        }
         
         //Шрифт
         let currentSize = fs.getCurrentSize()
@@ -43,7 +44,12 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func swithThemeChange(_ sender: UISwitch) {
-        //ThemeManager.applyTheme(theme: .theme2)
+        if switchTheme.isOn {
+            self.theme.saveTheme(theme: colorTheme.dark)
+        }
+        else {
+            self.theme.saveTheme(theme: colorTheme.light)
+        }
         
         let alertController = UIAlertController(title: "Тема изменена", message:
             "При следующем запуске приложения вы увидите выбранную тему", preferredStyle: UIAlertController.Style.alert)

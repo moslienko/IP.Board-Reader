@@ -23,7 +23,8 @@ class UserForumsTableViewController: UITableViewController,UIViewControllerPrevi
         let nib = UINib.init(nibName: "ForumCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: reuseIdentifier)
         self.tableView.rowHeight = 110
-        
+        self.applyTheme()
+
         registerForPreviewing(with: self, sourceView: tableView)
     }
 

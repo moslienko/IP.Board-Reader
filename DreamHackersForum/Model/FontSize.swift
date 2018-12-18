@@ -10,10 +10,18 @@ import Foundation
 
 class FontSize {
     
+    /**
+     Установить размер шрифта
+     - Parameter size: Размер
+     */
     func setSize(size:Int) {
         UserDefaults.standard.set(size, forKey: "size")
     }
     
+    /**
+     Получить размер шрифта
+     - Returns: Размер
+     */
     func getCurrentSize() -> Int {
         var size = UserDefaults.standard.integer(forKey: "size")
        

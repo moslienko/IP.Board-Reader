@@ -24,8 +24,9 @@ class SubForumTableViewController: UITableViewController,UIViewControllerPreview
         let nib = UINib.init(nibName: "MainForumCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: cellID)
         registerForPreviewing(with: self, sourceView: tableView)
-
-        print (subForumSeque)
+        
+        self.applyTheme()
+        //print (subForumSeque)
 
         if subForumSeque.params.count > 0 {
             self.navigationItem.title = subForumSeque.params[0].title
@@ -46,6 +47,7 @@ class SubForumTableViewController: UITableViewController,UIViewControllerPreview
                 toolbarItems = toolbarPages
                 
                 navigationController?.setToolbarHidden(false, animated: true)
+                self.navigationController?.toolbar.applyTheme()
             }
             else {
                 navigationController?.setToolbarHidden(true, animated: true)

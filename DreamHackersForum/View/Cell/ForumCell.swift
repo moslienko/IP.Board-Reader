@@ -8,6 +8,19 @@
 
 import UIKit
 
+extension ForumCell {
+    func applyTheme() {
+        let themeManager = ThemeManager()
+        if themeManager.currentTheme() == .dark {
+           self.backgroundColor = UIColor.clear
+           self.layerView.backgroundColor = UIColor.darkGray
+           self.nameForum.textColor  = UIColor.white
+           self.urlLabel.textColor  = UIColor.gray
+        }
+    }
+}
+
+
 class ForumCell: UITableViewCell {
 
     @IBOutlet weak var layerView: UIView!
@@ -16,12 +29,13 @@ class ForumCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.applyTheme()
         layerView.layer.cornerRadius = 15
         layerView.layer.masksToBounds = true
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
+    
 }

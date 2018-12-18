@@ -20,6 +20,7 @@ class FavoriteThemesViewController: UITableViewController,UIViewControllerPrevie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.applyTheme()
         registerForPreviewing(with: self, sourceView: tableView)
     }
 

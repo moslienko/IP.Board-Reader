@@ -8,6 +8,22 @@
 
 import UIKit
 
+extension TopicCellTableViewCell {
+    func applyTheme() {
+        let themeManager = ThemeManager()
+        if themeManager.currentTheme() == .dark {
+            self.backgroundColor = UIColor.black
+            self.username.textColor = UIColor.lightGray
+            self.date.textColor = UIColor.gray
+            self.message.textColor = UIColor.white
+            self.message.backgroundColor = UIColor.lightGray
+            
+            self.message.layer.masksToBounds = true
+            self.message.layer.cornerRadius = 7
+        }
+    }
+}
+
 class TopicCellTableViewCell: UITableViewCell {
 
     @IBOutlet weak var username: UILabel!
@@ -16,6 +32,7 @@ class TopicCellTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.applyTheme()
     }
     
 }
