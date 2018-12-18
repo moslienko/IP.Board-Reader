@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoriteThemesViewController: UITableViewController {
+class FavoriteThemesViewController: UITableViewController,UIViewControllerPreviewingDelegate {
 
     private let reuseIdentifier = "cellFavorite"
     
@@ -20,6 +20,7 @@ class FavoriteThemesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerForPreviewing(with: self, sourceView: tableView)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -84,5 +85,34 @@ class FavoriteThemesViewController: UITableViewController {
             }
         }
     }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        navigationController?.pushViewController(viewControllerToCommit, animated: true)
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        if let indexPath = tableView.indexPathForRow(at: location) {
+            previewingContext.sourceRect = tableView.rectForRow(at: indexPath)
+            return openTopicsForumVC(for: indexPath.row)
+        }
+        
+        return nil
+    }
+    
+    /**
+     Получить контроллер темы форума
+     - Parameter index: Индекс ячейки
+     - Returns: VC
+     */
+    func openTopicsForumVC(for index: Int) -> TopicTableViewController {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "TopicForum_VC") as? TopicTableViewController else {
+            fatalError("Couldn't load detail view controller")
+        }
+        let clickedTopic = self.favoritesItem[index]
+        vc.topic = [topicData(title: clickedTopic.name, url: clickedTopic.url, count: "0")]
+
+        return vc
+    }
+    
     
 }

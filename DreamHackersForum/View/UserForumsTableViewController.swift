@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserForumsTableViewController: UITableViewController {
+class UserForumsTableViewController: UITableViewController,UIViewControllerPreviewingDelegate {
     private let reuseIdentifier = "cellAllForums"
 
     var userForums = [UserForum]() {
@@ -23,6 +23,8 @@ class UserForumsTableViewController: UITableViewController {
         let nib = UINib.init(nibName: "ForumCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: reuseIdentifier)
         self.tableView.rowHeight = 110
+        
+        registerForPreviewing(with: self, sourceView: tableView)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -104,4 +106,34 @@ class UserForumsTableViewController: UITableViewController {
         }
     }
 
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        navigationController?.pushViewController(viewControllerToCommit, animated: true)
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        if let indexPath = tableView.indexPathForRow(at: location) {
+            previewingContext.sourceRect = tableView.rectForRow(at: indexPath)
+            return openForumVC(for: indexPath.row)
+        }
+        
+        return nil
+    }
+    
+    /**
+     Получить контроллер форума
+     - Parameter section: Индекс секции
+     - Returns: VC
+     */
+    func openForumVC(for index: Int) -> MainForumTableViewController {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "Forum_VC") as? MainForumTableViewController else {
+            fatalError("Couldn't load detail view controller")
+        }
+        let clickCellData = self.userForums[index]
+        
+        CurrentForum.shared.url = clickCellData.url
+        CurrentForum.shared.id = clickCellData.id
+        CurrentForum.shared.name = clickCellData.name
+        
+        return vc
+    }
 }

@@ -12,7 +12,7 @@
         <!--Forum-->
         <scene sceneID="vDc-Yg-eSo">
             <objects>
-                <tableViewController id="Cy1-fX-FIy" customClass="MainForumTableViewController" customModule="DreamHackersForum" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Forum_VC" id="Cy1-fX-FIy" customClass="MainForumTableViewController" customModule="DreamHackersForum" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="kZy-gn-msz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -227,7 +227,7 @@
         <!--Subforum-->
         <scene sceneID="k6B-lx-oVJ">
             <objects>
-                <tableViewController id="k8b-aN-sv4" customClass="SubForumTableViewController" customModule="DreamHackersForum" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SubForum_VC" id="k8b-aN-sv4" customClass="SubForumTableViewController" customModule="DreamHackersForum" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2MI-1v-hOa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -259,7 +259,7 @@
         <!--Theme-->
         <scene sceneID="c2n-es-W5M">
             <objects>
-                <tableViewController id="KpP-cL-kF7" customClass="TopicTableViewController" customModule="DreamHackersForum" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TopicForum_VC" id="KpP-cL-kF7" customClass="TopicTableViewController" customModule="DreamHackersForum" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZCM-ds-xrz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -374,6 +374,6 @@
         <image name="safari" width="22.5" height="22.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NNW-hH-FwH"/>
+        <segue reference="n7c-2V-V4H"/>
     </inferredMetricsTieBreakers>
 </document>
