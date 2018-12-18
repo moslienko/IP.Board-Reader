@@ -27,7 +27,8 @@ typealias topicData = (title: String, url: String, count: String)
 typealias pageCount = (number: String, url: String)
 //Сообщения на форуме
 typealias topicMsg = (username: String, date: String, message: String)
-
+//Основные форумы с разделами
+typealias mainTopics = (title:String,menu:[topicData])
 /**
  Получить HTML содержимое страницы
  - Parameter url: URL страницы
@@ -49,10 +50,12 @@ func getHTMLContent(url:String) -> String {
  Получить список разделов форума
  - Returns: Массив со списком названий разделов, массив со списком тем в каждом разделе
  */
-func getMainForumTopics() -> (menu:[String], submenu:[[Any]]) {
+func getMainForumTopics() -> [mainTopics] {
     
     var menu = [String]()
     var menuInside = [[topicData]]()
+
+    var topics = [mainTopics]()
 
     do {
         let url = "http://\(CurrentForum.shared.url)"
@@ -77,14 +80,31 @@ func getMainForumTopics() -> (menu:[String], submenu:[[Any]]) {
                     for i in menuDivElementLi.enumerated() {
                         let tag = i.element.child(0).tag().getName()
                         
+                        
                         if tag == "strong" {
                             menu.append(try i.element.child(0).text())
+                            
+                            topics.append((
+                                title: try i.element.child(0).text(),
+                                menu: [topicData(
+                                    title: "",
+                                    url: "",
+                                    count: "Delete this"
+                                    )]))
+
                         }
                         else {
                             if tag != "ul" {
-                                
+                               
                                 let count = menu.count - 1
-                                
+                                print ("test count:",topics[count])
+    
+                                topics[count].menu.append(topicData(
+                                        title: try i.element.child(0).text(),
+                                        url: try i.element.child(0).attr("href"),
+                                        count: try i.element.child(1).text()
+                                ))
+       
                                 if menuInside.indices.contains(count) {
                                     menuInside[count].append(
                                         topicData( title: try i.element.child(0).text(),
@@ -98,7 +118,15 @@ func getMainForumTopics() -> (menu:[String], submenu:[[Any]]) {
                         }
                         
                     }
-                    return (menu:menu, submenu:menuInside)
+                    
+                    for (i,j) in topics.enumerated() {
+                        if j.menu[0].count == "Delete this" {
+                            topics[i].menu.remove(at: 0)
+                        }
+                    }
+                    
+                    print ("topics:",topics)
+                    return topics
                 }
                 
                 
@@ -109,7 +137,7 @@ func getMainForumTopics() -> (menu:[String], submenu:[[Any]]) {
     } catch {
         print("error")
     }
-    return (menu:menu, submenu:menuInside)
+    return topics
 }
 
 /**
@@ -161,7 +189,7 @@ func getTopic(url:String) -> [topicMsg] {
     do {
         
         let html = getHTMLContent(url: url)
-        
+
         let doc: Document = try SwiftSoup.parse(html)
         let menuDiv: Elements = try doc.select("div.postwrapper")
 
@@ -169,10 +197,9 @@ func getTopic(url:String) -> [topicMsg] {
             
             let topBar = try i.select("div.posttopbar").first()
             let messageContent = try i.select("div.postcontent").first()
-            
             /*Цитируемое сообщение выделяется курсивом*/
             let content1 = try messageContent?.html().replacingOccurrences(of: "<div class=\"quotemain\">", with: "<i>", options: .literal, range: nil)
-            
+
             let content = content1!.replacingOccurrences(of: "</div>", with: "</i>", options: .literal, range: nil)
             //HTML для сообщения, что бы сохранить форматирование
 
@@ -183,7 +210,6 @@ func getTopic(url:String) -> [topicMsg] {
                     message: "<div style=\"font-size: \(fs.getCurrentSize())\">\(content)</div>"
                     //message: try (messageContent?.text())!
             ))
-            
         }
         return menu
         
