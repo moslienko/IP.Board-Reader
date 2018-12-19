@@ -24,6 +24,7 @@
 		95E8456D21C9FB040063CDAA /* Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8456C21C9FB040063CDAA /* Animate.swift */; };
 		95E8457C21CA25200063CDAA /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8457B21CA25200063CDAA /* Localization.swift */; };
 		95E8457F21CA26DA0063CDAA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95E8458121CA26DA0063CDAA /* Localizable.strings */; };
+		95E8458421CA2C490063CDAA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95E8458621CA2C490063CDAA /* InfoPlist.strings */; };
 		95EBDF4421C8A15B00D4BDB3 /* FavoriteThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EBDF4321C8A15B00D4BDB3 /* FavoriteThemesViewController.swift */; };
 		95EBDF4E21C910C800D4BDB3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EBDF4D21C910C800D4BDB3 /* Theme.swift */; };
 		95F8470421C649340067F193 /* ForumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F8470321C649340067F193 /* ForumCell.xib */; };
@@ -61,6 +62,8 @@
 		95E8456F21CA08C00063CDAA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		95E8457B21CA25200063CDAA /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		95E8458021CA26DA0063CDAA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		95E8458521CA2C490063CDAA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		95E8458821CA2CDE0063CDAA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		95EBDF4321C8A15B00D4BDB3 /* FavoriteThemesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteThemesViewController.swift; sourceTree = "<group>"; };
 		95EBDF4D21C910C800D4BDB3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		95F8470321C649340067F193 /* ForumCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForumCell.xib; sourceTree = "<group>"; };
@@ -111,6 +114,7 @@
 				95084DE02184039700966399 /* SupportedFiles */,
 				95084DCD2184033C00966399 /* AppDelegate.swift */,
 				95084DD92184033E00966399 /* Info.plist */,
+				95E8458621CA2C490063CDAA /* InfoPlist.strings */,
 			);
 			path = DreamHackersForum;
 			sourceTree = "<group>";
@@ -237,6 +241,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 95084DC12184033C00966399;
 			productRefGroup = 95084DCB2184033C00966399 /* Products */;
@@ -254,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95084DEA21844CB500966399 /* MainForumCell.xib in Resources */,
+				95E8458421CA2C490063CDAA /* InfoPlist.strings in Resources */,
 				95F8470421C649340067F193 /* ForumCell.xib in Resources */,
 				95084DD82184033E00966399 /* LaunchScreen.storyboard in Resources */,
 				95668F90218571C70009B99A /* TopicCell.xib in Resources */,
@@ -358,6 +364,15 @@
 				95E8458021CA26DA0063CDAA /* ru */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		95E8458621CA2C490063CDAA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95E8458521CA2C490063CDAA /* en */,
+				95E8458821CA2CDE0063CDAA /* ru */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
