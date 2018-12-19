@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class UserForumsTableViewController: UITableViewController,UIViewControllerPreviewingDelegate {
     private let reuseIdentifier = "cellAllForums"
-
+    
     var userForums = [UserForum]() {
         didSet {
             self.tableView.reloadData()
@@ -24,13 +25,18 @@ class UserForumsTableViewController: UITableViewController,UIViewControllerPrevi
         self.tableView.register(nib, forCellReuseIdentifier: reuseIdentifier)
         self.tableView.rowHeight = 110
         self.applyTheme()
-
         registerForPreviewing(with: self, sourceView: tableView)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Loading".localized
+        hud.show(in: self.view)
+        
         self.userForums = getUserForums()
+        
+        hud.dismiss()
     }
     // MARK: - Table view data source
 
@@ -64,14 +70,36 @@ class UserForumsTableViewController: UITableViewController,UIViewControllerPrevi
             if textField.text != "" {
                 let url = textField.text
                 
+                let hud = JGProgressHUD(style: .dark)
+
                 if (url?.isValidURL)! {
                     let siteName = getSiteName(url: url!)
-                    
+                
                     if isIPBoardSite(url: url!){
                         if saveForum(forumData: UserForum(id: randomID(10) as String, name: siteName, url: url!)) {
                             self.userForums = getUserForums()
+                            hud.textLabel.text = "Forum added".localized;
+                            hud.indicatorView = JGProgressHUDSuccessIndicatorView.init()
+                            hud.show(in: self.view)
+                            hud.dismiss(afterDelay: 2.0)
+                        }
+                        else {
+                            hud.textLabel.text = "Error save forum".localized;
+
                         }
                     }
+                    else {
+                        hud.indicatorView = JGProgressHUDErrorIndicatorView.init()
+                        hud.textLabel.text = "Forum should based on IP.Board".localized;
+                        hud.show(in: self.view)
+                        hud.dismiss(afterDelay: 2.0)
+                    }
+                }
+                else {
+                    hud.indicatorView = JGProgressHUDErrorIndicatorView.init()
+                    hud.textLabel.text = "Not correct URL".localized;
+                    hud.show(in: self.view)
+                    hud.dismiss(afterDelay: 2.0)
                 }
             }
         }

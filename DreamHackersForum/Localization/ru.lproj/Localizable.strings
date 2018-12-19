@@ -20,4 +20,13 @@
 "Reload the app to see new theme" = "Перезагрузите приложение что бы увидеть новую тему";
 "version" = "версия";
 "IP.Board is a product of Invision Power Services Inc. This application is not an official client, allowing you to view the forums running on this system." = "IP.Board является продуктом Invision Power Services Inc. Данное приложение является не официальным клиентом, позволяющием просматривать форумы, работающие на этой системе.";
-
+"Loading" = "Загрузка";
+"Error save forum" = "Ошибка сохранения форума";
+"Not correct URL" = "Не корректный url адрес";
+"Forum added" = "Форум добавлен";
+"Error delete theme" = "Ошибка удаления темы";
+"Theme deleted" = "Тема удалена";
+"Theme added to favorite" = "Тема добавлена в избранное";
+"Error add theme to favorite" = "Ошибка добавления темы в избранное";
+"Error delete forum" = "Ошибка удаления форума";
+"Forum deleted" = "Форум удален";

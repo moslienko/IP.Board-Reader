@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BF9FA2A6DCA495BC0EEA1D0A05AC1F0C"
-               BuildableName = "Pods_DreamHackersForum.framework"
-               BlueprintName = "Pods-DreamHackersForum"
+               BlueprintIdentifier = "2DF36E679C9463D1B976801761370B5E"
+               BuildableName = "JGProgressHUD.bundle"
+               BlueprintName = "JGProgressHUD-JGProgressHUD"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BF9FA2A6DCA495BC0EEA1D0A05AC1F0C"
-            BuildableName = "Pods_DreamHackersForum.framework"
-            BlueprintName = "Pods-DreamHackersForum"
+            BlueprintIdentifier = "2DF36E679C9463D1B976801761370B5E"
+            BuildableName = "JGProgressHUD.bundle"
+            BlueprintName = "JGProgressHUD-JGProgressHUD"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

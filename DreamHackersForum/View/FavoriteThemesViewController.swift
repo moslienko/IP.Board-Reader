@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class FavoriteThemesViewController: UITableViewController,UIViewControllerPreviewingDelegate {
 
@@ -67,9 +68,19 @@ class FavoriteThemesViewController: UITableViewController,UIViewControllerPrevie
             alert.addAction(UIAlertAction(title: "Yes".localized, style: .default , handler:{ (UIAlertAction)in
                 if deleteFavoriteTheme(url: self.favoritesItem[index.row].url) {
                     self.favoritesItem = getFavoriteThemesForForum(id: CurrentForum.shared.id)
+                    
+                    let hud = JGProgressHUD(style: .dark)
+                    hud.indicatorView = JGProgressHUDSuccessIndicatorView.init()
+                    hud.textLabel.text = "Theme deleted".localized;
+                    hud.show(in: self.view)
+                    hud.dismiss(afterDelay: 2.0)
                 }
                 else {
-                    print ("error delete")
+                    let hud = JGProgressHUD(style: .dark)
+                    hud.indicatorView = JGProgressHUDErrorIndicatorView.init()
+                    hud.textLabel.text = "Error delete theme".localized;
+                    hud.show(in: self.view)
+                    hud.dismiss(afterDelay: 2.0)
                 }
             }))
             

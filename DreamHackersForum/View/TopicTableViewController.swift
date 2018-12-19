@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import JGProgressHUD
 
 class TopicTableViewController: UITableViewController {
     
@@ -124,9 +125,19 @@ class TopicTableViewController: UITableViewController {
                 //Убрать
                 if deleteFavoriteTheme(url: url) {
                     addFavoriteButton.image = UIImage(named: favoriteImg.noFav.rawValue)
+                    let hud = JGProgressHUD(style: .dark)
+                    hud.indicatorView = JGProgressHUDSuccessIndicatorView.init()
+                    hud.textLabel.text = "Theme deleted".localized;
+                    hud.show(in: self.view)
+                    hud.dismiss(afterDelay: 2.0)
+                   
                 }
                 else {
-                    print ("error delete from favorite")
+                    let hud = JGProgressHUD(style: .dark)
+                    hud.indicatorView = JGProgressHUDErrorIndicatorView.init()
+                    hud.textLabel.text = "Error delete theme".localized;
+                    hud.show(in: self.view)
+                    hud.dismiss(afterDelay: 2.0)
                 }
             }
             else {
@@ -138,14 +149,23 @@ class TopicTableViewController: UITableViewController {
                     url: url
                 )) {
                     addFavoriteButton.image = UIImage(named: favoriteImg.alreadyFav.rawValue)
-                    print ("save ok")
+                    let hud = JGProgressHUD(style: .dark)
+                    hud.indicatorView = JGProgressHUDSuccessIndicatorView.init()
+                    hud.textLabel.text = "Theme added to favorite".localized;
+                    hud.show(in: self.view)
+                    hud.dismiss(afterDelay: 2.0)
                 }
                 else {
-                    print ("error save favorite")
+                    let hud = JGProgressHUD(style: .dark)
+                    hud.indicatorView = JGProgressHUDSuccessIndicatorView.init()
+                    hud.textLabel.text = "Error add theme to favorite".localized;
+                    hud.show(in: self.view)
+                    hud.dismiss(afterDelay: 2.0)
                 }
             }
         }
     }
+
     
     /**
      Открыть тему в Safari (Внутри программы)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class SettingsViewController: UITableViewController {
 
@@ -54,11 +55,11 @@ class SettingsViewController: UITableViewController {
             self.theme.saveTheme(theme: colorTheme.light)
         }
         
-        let alertController = UIAlertController(title: "Theme changed".localized, message:
-           "Reload the app to see new theme".localized, preferredStyle: UIAlertController.Style.alert)
-        alertController.addAction(UIAlertAction(title: "Ok".localized, style: UIAlertAction.Style.default,handler: nil))
-        
-        self.present(alertController, animated: true, completion: nil)
+        let hud = JGProgressHUD(style: .dark)
+        hud.indicatorView = JGProgressHUDSuccessIndicatorView.init()
+        hud.textLabel.text = "Reload the app to see new theme".localized;
+        hud.show(in: self.view)
+        hud.dismiss(afterDelay: 3.0)
     }
     
     

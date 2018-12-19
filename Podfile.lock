@@ -1,16 +1,20 @@
 PODS:
+  - JGProgressHUD (2.0.3)
   - SwiftSoup (1.7.4)
 
 DEPENDENCIES:
+  - JGProgressHUD
   - SwiftSoup
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - JGProgressHUD
     - SwiftSoup
 
 SPEC CHECKSUMS:
+  JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   SwiftSoup: 92f5b348c131aed8af04f4326db1579ab19fa08c
 
-PODFILE CHECKSUM: 63794cafac8a3d8bedb38a605fd4b4e5657b3177
+PODFILE CHECKSUM: 92b40ca61f04cbeaca6acfb279423ec59bdf11fe
 
 COCOAPODS: 1.5.3
