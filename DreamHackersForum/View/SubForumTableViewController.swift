@@ -73,6 +73,10 @@ class SubForumTableViewController: UITableViewController,UIViewControllerPreview
         return 1
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.animate(index: indexPath.row)
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return subForumSeque.mainSubMenu.count
     }

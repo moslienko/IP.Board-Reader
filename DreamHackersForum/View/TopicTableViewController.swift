@@ -108,6 +108,10 @@ class TopicTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.animate(index: indexPath.row)
+    }
+    
     @IBAction func addToFavoriteClick(_ sender: UIBarButtonItem) {
         if self.topic.count > 0 {
             //Проверка

@@ -81,6 +81,10 @@ class FavoriteThemesViewController: UITableViewController,UIViewControllerPrevie
         return [delete]
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.animate(index: indexPath.row)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "sequeOpenTheme" {
             if let indexPath = tableView.indexPathForSelectedRow {

@@ -87,7 +87,11 @@ class UserForumsTableViewController: UITableViewController,UIViewControllerPrevi
         
         self.present(alert, animated:true, completion: nil)
     }
+
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.animate(index: indexPath.row)
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "sequeOpenForum", sender: tableView)

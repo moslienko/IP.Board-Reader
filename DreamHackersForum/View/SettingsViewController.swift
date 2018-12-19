@@ -43,6 +43,10 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.animate(index: indexPath.row)
+    }
+    
     @IBAction func swithThemeChange(_ sender: UISwitch) {
         if switchTheme.isOn {
             self.theme.saveTheme(theme: colorTheme.dark)
