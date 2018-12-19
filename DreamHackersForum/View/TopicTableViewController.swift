@@ -112,6 +112,9 @@ class TopicTableViewController: UITableViewController {
         cell.animate(index: indexPath.row)
     }
     
+    /**
+     Добавить тему в избранное
+     */
     @IBAction func addToFavoriteClick(_ sender: UIBarButtonItem) {
         if self.topic.count > 0 {
             //Проверка
@@ -144,11 +147,32 @@ class TopicTableViewController: UITableViewController {
         }
     }
     
+    /**
+     Открыть тему в Safari (Внутри программы)
+     */
     @IBAction func openPageInBrowser(_ sender: UIBarButtonItem) {
         if topic.count > 0 {
             let url = URL(string: topic[0].url)
             let vc = SFSafariViewController(url: url!)
             present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    /**
+     Поделиться ссылкой на тему
+     */
+    @IBAction func shareURL(_ sender: UIBarButtonItem) {
+        if self.topic.count > 0 {
+            let url = self.topic[0].url
+            if url.isValidURL {
+                let someText:String = self.topic[0].title
+                let objectsToShare:URL = URL(string: url)!
+                let sharedObjects:[AnyObject] = [objectsToShare as AnyObject,someText as AnyObject]
+                let activityViewController = UIActivityViewController(activityItems : sharedObjects, applicationActivities: nil)
+                activityViewController.popoverPresentationController?.sourceView = self.view
+
+                self.present(activityViewController, animated: true, completion: nil)
+            }
         }
     }
 }

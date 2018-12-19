@@ -335,7 +335,11 @@
                                     <action selector="openPageInBrowser:" destination="KpP-cL-kF7" id="sA3-JU-EON"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="action" id="Zef-S2-6Wc"/>
+                            <barButtonItem systemItem="action" id="Zef-S2-6Wc">
+                                <connections>
+                                    <action selector="shareURL:" destination="KpP-cL-kF7" id="l3K-vh-8An"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
