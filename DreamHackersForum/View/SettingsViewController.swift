@@ -37,7 +37,6 @@ class SettingsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print ("clicked")
         if indexPath.row == 2 {
             openAbout()
         }
@@ -55,9 +54,9 @@ class SettingsViewController: UITableViewController {
             self.theme.saveTheme(theme: colorTheme.light)
         }
         
-        let alertController = UIAlertController(title: "Тема изменена", message:
-            "При следующем запуске приложения вы увидите выбранную тему", preferredStyle: UIAlertController.Style.alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default,handler: nil))
+        let alertController = UIAlertController(title: "Theme changed".localized, message:
+           "Reload the app to see new theme".localized, preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Ok".localized, style: UIAlertAction.Style.default,handler: nil))
         
         self.present(alertController, animated: true, completion: nil)
     }
@@ -69,9 +68,14 @@ class SettingsViewController: UITableViewController {
     }
     
     func openAbout() {
-        let alertController = UIAlertController(title: "О приложении", message:
-            "Hello, world!", preferredStyle: UIAlertController.Style.alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default,handler: nil))
+        let appName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as! String
+
+        let nsObject: AnyObject? = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as AnyObject
+        let version = nsObject as! String
+        
+        let alertController = UIAlertController(title: "About app".localized, message:
+            "\(appName) \("version".localized) \(version.localized).\r\n \("IP.Board is a product of Invision Power Services Inc. This application is not an official client, allowing you to view the forums running on this system.".localized)", preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Ok".localized, style: UIAlertAction.Style.default,handler: nil))
         
         self.present(alertController, animated: true, completion: nil)
     }

@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  DreamHackersForum
+
+  Created by Pavel Moslienko on 19/12/2018.
+  Copyright © 2018 Pavel Moslienko. All rights reserved.
+*/
+"Enter url" = "Введите url";
+"Add" = "Добавить";
+"Cancel" = "Отмена";
+"Forum should based on IP.Board" = "Форум должен работать на IP.Board";
+"Delete" = "Удалить";
+"Delete theme from favorite?" = "Удалить тему из избранного?";
+"Yes" = "Да";
+"Delete forum" = "Удалить форум";
+"and favorite themes?" = "и избранные темы?";
+"About app" = "О приложении";
+"Ok" = "Ок";
+"Theme changed" = "Тема изменена";
+"Reload the app to see new theme" = "Перезагрузите приложение что бы увидеть новую тему";
+"version" = "версия";
+"IP.Board is a product of Invision Power Services Inc. This application is not an official client, allowing you to view the forums running on this system." = "IP.Board является продуктом Invision Power Services Inc. Данное приложение является не официальным клиентом, позволяющием просматривать форумы, работающие на этой системе.";
+

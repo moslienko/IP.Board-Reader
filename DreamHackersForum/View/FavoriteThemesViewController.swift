@@ -61,10 +61,10 @@ class FavoriteThemesViewController: UITableViewController,UIViewControllerPrevie
     }
 
     override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
-            let alert = UIAlertController(title: "Delete", message: "Delete theme from favorite?", preferredStyle: .alert)
+        let delete = UITableViewRowAction(style: .normal, title: "Delete".localized) { action, index in
+            let alert = UIAlertController(title: "Delete".localized, message: "Delete theme from favorite?".localized, preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: "Yes", style: .default , handler:{ (UIAlertAction)in
+            alert.addAction(UIAlertAction(title: "Yes".localized, style: .default , handler:{ (UIAlertAction)in
                 if deleteFavoriteTheme(url: self.favoritesItem[index.row].url) {
                     self.favoritesItem = getFavoriteThemesForForum(id: CurrentForum.shared.id)
                 }
@@ -73,7 +73,7 @@ class FavoriteThemesViewController: UITableViewController,UIViewControllerPrevie
                 }
             }))
             
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction)in }))
+            alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler:{ (UIAlertAction)in }))
             self.present(alert, animated: true, completion: nil)
         }
         delete.backgroundColor = .red

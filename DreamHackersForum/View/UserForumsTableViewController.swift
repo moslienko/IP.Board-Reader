@@ -56,9 +56,9 @@ class UserForumsTableViewController: UITableViewController,UIViewControllerPrevi
     
 
     @IBAction func addNewForum(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Enter URL", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Enter url".localized, message: "", preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "Add", style: .default) { (alertAction) in
+        let action = UIAlertAction(title: "Add".localized, style: .default) { (alertAction) in
             let textField = alert.textFields![0] as UITextField
             
             if textField.text != "" {
@@ -76,10 +76,10 @@ class UserForumsTableViewController: UITableViewController,UIViewControllerPrevi
             }
         }
         
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancel = UIAlertAction(title: "Cancel".localized, style: .cancel)
         
         alert.addTextField { (textField) in
-            textField.placeholder = "Enter url main page forum IT.Board"
+            textField.placeholder = "Forum should based on IP.Board".localized
         }
         
         alert.addAction(action)

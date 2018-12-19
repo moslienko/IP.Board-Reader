@@ -1,0 +1,36 @@
+
+/* Class = "UINavigationItem"; title = "Favorite"; ObjectID = "2ZW-Kp-T9S"; */
+"2ZW-Kp-T9S.title" = "Избранное";
+
+/* Class = "UILabel"; text = "Size"; ObjectID = "9HT-lC-gdg"; */
+"9HT-lC-gdg.text" = "Размер";
+
+/* Class = "UILabel"; text = "18"; ObjectID = "ClG-q8-ca5"; */
+"ClG-q8-ca5.text" = "18";
+
+/* Class = "UINavigationItem"; title = "All forums"; ObjectID = "P2f-bi-WkA"; */
+"P2f-bi-WkA.title" = "Все форумы";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "PgC-qR-0Jc"; */
+"PgC-qR-0Jc.title" = "Сообщение";
+
+/* Class = "UINavigationItem"; title = "Subforum"; ObjectID = "Rxc-cn-dW8"; */
+"Rxc-cn-dW8.title" = "Подфорум";
+
+/* Class = "UINavigationItem"; title = "Theme"; ObjectID = "Uvo-dH-gyI"; */
+"Uvo-dH-gyI.title" = "Тема";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "dJ6-eV-poL"; */
+"dJ6-eV-poL.title" = "Настройки";
+
+/* Class = "UINavigationItem"; title = "Forum"; ObjectID = "iwa-J2-heP"; */
+"iwa-J2-heP.title" = "Форум";
+
+/* Class = "UILabel"; text = "Dark theme"; ObjectID = "loN-u0-uxa"; */
+"loN-u0-uxa.text" = "Темная тема";
+
+/* Class = "UILabel"; text = "About"; ObjectID = "nXZ-ND-Nka"; */
+"nXZ-ND-Nka.text" = "О приложении";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "r00-nD-44e"; */
+"r00-nD-44e.text" = "Название";
