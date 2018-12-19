@@ -48,6 +48,13 @@ class FavoriteThemesViewController: UITableViewController,UIViewControllerPrevie
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        
+        let themeManager = ThemeManager()
+        if themeManager.currentTheme() == .dark {
+              cell.textLabel?.textColor = UIColor.white
+              cell.backgroundColor = UIColor.black
+        }
+        
         cell.textLabel?.text = self.favoritesItem[indexPath.row].name
 
         return cell
