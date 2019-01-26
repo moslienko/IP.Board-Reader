@@ -12,15 +12,21 @@ import JGProgressHUD
 class UserForumsTableViewController: UITableViewController,UIViewControllerPreviewingDelegate {
     private let reuseIdentifier = "cellAllForums"
     
+    @IBOutlet var backgroundTableView: UIView!
+
     var userForums = [UserForum]() {
         didSet {
             self.tableView.reloadData()
+            if userForums.count == 0 {
+                self.tableView.backgroundView = self.backgroundTableView
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        UIApplication.shared.shortcutItems = getHomeIconShortcuts()
+
         let nib = UINib.init(nibName: "ForumCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: reuseIdentifier)
         self.tableView.rowHeight = 110
