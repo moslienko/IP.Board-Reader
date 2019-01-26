@@ -43,7 +43,7 @@ func randomID (_ len : Int) -> NSString {
  Получить сохраненные форумы из CoreData
  - Returns: Сохраненные аудиокниги
  */
-func getUserForums() -> [UserForum]{
+func getUserForums(_ limit:Int = 0) -> [UserForum]{
     var forum = [UserForum]()
     
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return forum }
@@ -51,7 +51,10 @@ func getUserForums() -> [UserForum]{
     
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserForums")
     fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "name", ascending: false)]
-    
+    if limit != 0 {
+        //Для shortcuts
+        fetchRequest.fetchLimit = limit
+    }
     do {
         let result = try managedContext.fetch(fetchRequest)
         for data in result as! [NSManagedObject] {

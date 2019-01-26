@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9507792821CFB5C1001565F8 /* HomeIconShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9507792721CFB5C1001565F8 /* HomeIconShortcuts.swift */; };
 		95084DCE2184033C00966399 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95084DCD2184033C00966399 /* AppDelegate.swift */; };
 		95084DD32184033C00966399 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95084DD12184033C00966399 /* Main.storyboard */; };
 		95084DD52184033E00966399 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95084DD42184033E00966399 /* Assets.xcassets */; };
@@ -41,6 +42,8 @@
 		0F25BDB8DFC24872380F5D31 /* Pods-DreamHackersForum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamHackersForum.release.xcconfig"; path = "Pods/Target Support Files/Pods-DreamHackersForum/Pods-DreamHackersForum.release.xcconfig"; sourceTree = "<group>"; };
 		375DFA19E02B7A1B8198DCE1 /* Pods-DreamHackersForum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamHackersForum.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DreamHackersForum/Pods-DreamHackersForum.debug.xcconfig"; sourceTree = "<group>"; };
 		94DE46AED710B5C3CD8B1A48 /* Pods_DreamHackersForum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DreamHackersForum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9507792721CFB5C1001565F8 /* HomeIconShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeIconShortcuts.swift; sourceTree = "<group>"; };
+		9507792921CFB682001565F8 /* DreamHackersForum.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DreamHackersForum.entitlements; sourceTree = "<group>"; };
 		95084DCA2184033C00966399 /* DreamHackersForum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamHackersForum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95084DCD2184033C00966399 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95084DD22184033C00966399 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -108,6 +111,7 @@
 		95084DCC2184033C00966399 /* DreamHackersForum */ = {
 			isa = PBXGroup;
 			children = (
+				9507792921CFB682001565F8 /* DreamHackersForum.entitlements */,
 				95E8457021CA093C0063CDAA /* Localization */,
 				95084DDF2184039300966399 /* Model */,
 				95084DE1218403A300966399 /* View */,
@@ -140,6 +144,7 @@
 			children = (
 				95084DD42184033E00966399 /* Assets.xcassets */,
 				95084DD62184033E00966399 /* LaunchScreen.storyboard */,
+				9507792721CFB5C1001565F8 /* HomeIconShortcuts.swift */,
 			);
 			path = SupportedFiles;
 			sourceTree = "<group>";
@@ -231,6 +236,11 @@
 				TargetAttributes = {
 					95084DC92184033C00966399 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -324,6 +334,7 @@
 				95F8470621C64A5F0067F193 /* ForumCell.swift in Sources */,
 				95084DE721844CA300966399 /* MainForumTableViewCell.swift in Sources */,
 				95668F94218575720009B99A /* db.xcdatamodel in Sources */,
+				9507792821CFB5C1001565F8 /* HomeIconShortcuts.swift in Sources */,
 				95FF557921C756A00008F6E2 /* FavoriteThemes.swift in Sources */,
 				95084DCE2184033C00966399 /* AppDelegate.swift in Sources */,
 				95668F8E21855B190009B99A /* SubForumTableViewController.swift in Sources */,
@@ -503,6 +514,7 @@
 			baseConfigurationReference = 375DFA19E02B7A1B8198DCE1 /* Pods-DreamHackersForum.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DreamHackersForum/DreamHackersForum.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVFSZXK7VF;
 				INFOPLIST_FILE = DreamHackersForum/Info.plist;
@@ -511,7 +523,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = moslienko.DreamHackersForum;
+				PRODUCT_BUNDLE_IDENTIFIER = moslienko.IPBoardReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -523,6 +535,7 @@
 			baseConfigurationReference = 0F25BDB8DFC24872380F5D31 /* Pods-DreamHackersForum.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DreamHackersForum/DreamHackersForum.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVFSZXK7VF;
 				INFOPLIST_FILE = DreamHackersForum/Info.plist;
@@ -531,7 +544,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = moslienko.DreamHackersForum;
+				PRODUCT_BUNDLE_IDENTIFIER = moslienko.IPBoardReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
