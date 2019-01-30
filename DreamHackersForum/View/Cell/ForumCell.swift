@@ -11,11 +11,20 @@ import UIKit
 extension ForumCell {
     func applyTheme() {
         let themeManager = ThemeManager()
+        
+        tableViewCellContent.layer.cornerRadius = 7
+        tableViewCellContent.layer.masksToBounds = false
+        
+        tableViewCellContent.layer.shadowColor = UIColor.gray.cgColor
+        tableViewCellContent.layer.shadowOpacity = 0.3
+        tableViewCellContent.layer.shadowOffset = CGSize.zero
+        tableViewCellContent.layer.shadowRadius = 6
+        
         if themeManager.currentTheme() == .dark {
            self.backgroundColor = UIColor.clear
-           self.layerView.backgroundColor = UIColor.darkGray
-           self.nameForum.textColor  = UIColor.white
-           self.urlLabel.textColor  = UIColor.gray
+            self.tableViewCellContent.backgroundColor = UIColor.darkGray
+            self.tableViewCellContent.textLabel?.textColor = UIColor.white
+            self.tableViewCellContent.detailTextLabel?.textColor = UIColor.gray
         }
     }
 }
@@ -23,15 +32,11 @@ extension ForumCell {
 
 class ForumCell: UITableViewCell {
 
-    @IBOutlet weak var layerView: UIView!
-    @IBOutlet weak var nameForum: UILabel!
-    @IBOutlet weak var urlLabel: UILabel!
+    @IBOutlet weak var tableViewCellContent: UITableViewCell!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.applyTheme()
-        layerView.layer.cornerRadius = 15
-        layerView.layer.masksToBounds = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

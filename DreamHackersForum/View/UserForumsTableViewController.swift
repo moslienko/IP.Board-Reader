@@ -29,7 +29,7 @@ class UserForumsTableViewController: UITableViewController,UIViewControllerPrevi
 
         let nib = UINib.init(nibName: "ForumCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: reuseIdentifier)
-        self.tableView.rowHeight = 110
+        self.tableView.rowHeight = 94
         self.applyTheme()
         registerForPreviewing(with: self, sourceView: tableView)
     }
@@ -57,15 +57,44 @@ class UserForumsTableViewController: UITableViewController,UIViewControllerPrevi
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:ForumCell = self.tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as! ForumCell
+        cell.selectionStyle = .none
         
         let data = self.userForums[indexPath.row]
         
-        cell.nameForum?.text = data.name
-        cell.urlLabel?.text = "\(data.url)"
+        cell.tableViewCellContent.textLabel?.text = data.name
+        cell.tableViewCellContent.detailTextLabel?.text = "\(data.url)"
+        
+        let url = URL(string: "http://www.\(data.url)/favicon.ico")
+        
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url!)
+            if data != nil {
+                DispatchQueue.main.async {
+                    cell.tableViewCellContent.imageView?.image = UIImage(data: data!)
+                }
+            }
+        }
         
         return cell
     }
     
+    //MARK: - Анимация при касании
+    
+    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.5) {
+            if let cell = tableView.cellForRow(at: indexPath) as? ForumCell {
+                cell.transform = .init(scaleX: 0.95, y: 0.95)
+            }
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.5) {
+            if let cell = tableView.cellForRow(at: indexPath) as? ForumCell {
+               cell.transform = .identity
+            }
+        }
+    }
 
     @IBAction func addNewForum(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Enter url".localized, message: "", preferredStyle: .alert)
