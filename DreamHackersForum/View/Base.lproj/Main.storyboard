@@ -395,7 +395,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EM7-UF-Bh1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="JYl-sd-5v9">
-                    <rect key="frame" x="0.0" y="0.0" width="380" height="128"/>
+                    <rect key="frame" x="0.0" y="0.0" width="380" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No forums added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WcC-76-oXi">
@@ -404,9 +404,10 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Supported forums are working on IP.Board. Usually this name you can see at the bottom of any page of the site." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CH7-kH-dae">
-                            <rect key="frame" x="16" y="58" width="348" height="61"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CH7-kH-dae">
+                            <rect key="frame" x="16" y="58" width="348" height="133"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <string key="text">Supported forums are working on IP.Board. Usually this name you can see at the bottom of any page of the site. Remark - the site must have a text version, usually it is available at the following address: *Main page*/lofiversion</string>
                             <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
