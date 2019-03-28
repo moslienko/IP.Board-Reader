@@ -16,6 +16,9 @@
 		95084DE721844CA300966399 /* MainForumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95084DE621844CA300966399 /* MainForumTableViewCell.swift */; };
 		95084DEA21844CB500966399 /* MainForumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95084DE921844CB500966399 /* MainForumCell.xib */; };
 		95278470218804BF00FBEB2A /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527846F218804BF00FBEB2A /* FontSize.swift */; };
+		954D741A224CAC3900DAA3B1 /* Extensions+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D7419224CAC3900DAA3B1 /* Extensions+String.swift */; };
+		954D741D224CAD0100DAA3B1 /* UserForum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D741C224CAD0100DAA3B1 /* UserForum.swift */; };
+		954D741F224CAD1700DAA3B1 /* FavoriteTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D741E224CAD1700DAA3B1 /* FavoriteTheme.swift */; };
 		95668F8E21855B190009B99A /* SubForumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95668F8D21855B190009B99A /* SubForumTableViewController.swift */; };
 		95668F90218571C70009B99A /* TopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95668F8F218571C70009B99A /* TopicCell.xib */; };
 		95668F922185727A0009B99A /* TopicCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95668F912185727A0009B99A /* TopicCellTableViewCell.swift */; };
@@ -23,7 +26,6 @@
 		95668F9A2185BD2A0009B99A /* MainForumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95668F992185BD290009B99A /* MainForumTableViewController.swift */; };
 		95668F9C2185D8E70009B99A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95668F9B2185D8E70009B99A /* SettingsViewController.swift */; };
 		95E8456D21C9FB040063CDAA /* Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8456C21C9FB040063CDAA /* Animate.swift */; };
-		95E8457C21CA25200063CDAA /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8457B21CA25200063CDAA /* Localization.swift */; };
 		95E8457F21CA26DA0063CDAA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95E8458121CA26DA0063CDAA /* Localizable.strings */; };
 		95E8458421CA2C490063CDAA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95E8458621CA2C490063CDAA /* InfoPlist.strings */; };
 		95EBDF4421C8A15B00D4BDB3 /* FavoriteThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EBDF4321C8A15B00D4BDB3 /* FavoriteThemesViewController.swift */; };
@@ -54,6 +56,9 @@
 		95084DE621844CA300966399 /* MainForumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainForumTableViewCell.swift; sourceTree = "<group>"; };
 		95084DE921844CB500966399 /* MainForumCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainForumCell.xib; sourceTree = "<group>"; };
 		9527846F218804BF00FBEB2A /* FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
+		954D7419224CAC3900DAA3B1 /* Extensions+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+String.swift"; sourceTree = "<group>"; };
+		954D741C224CAD0100DAA3B1 /* UserForum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserForum.swift; sourceTree = "<group>"; };
+		954D741E224CAD1700DAA3B1 /* FavoriteTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTheme.swift; sourceTree = "<group>"; };
 		95668F8D21855B190009B99A /* SubForumTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubForumTableViewController.swift; sourceTree = "<group>"; };
 		95668F8F218571C70009B99A /* TopicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicCell.xib; sourceTree = "<group>"; };
 		95668F912185727A0009B99A /* TopicCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -63,7 +68,6 @@
 		95E8456C21C9FB040063CDAA /* Animate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animate.swift; sourceTree = "<group>"; };
 		95E8456E21CA08BF0063CDAA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		95E8456F21CA08C00063CDAA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		95E8457B21CA25200063CDAA /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		95E8458021CA26DA0063CDAA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		95E8458521CA2C490063CDAA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		95E8458821CA2CDE0063CDAA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -111,45 +115,39 @@
 		95084DCC2184033C00966399 /* DreamHackersForum */ = {
 			isa = PBXGroup;
 			children = (
+				954D741B224CACB100DAA3B1 /* Resources */,
+				954D7418224CAC0600DAA3B1 /* Extensions */,
+				954D7417224CABEB00DAA3B1 /* Classes */,
 				9507792921CFB682001565F8 /* DreamHackersForum.entitlements */,
 				95E8457021CA093C0063CDAA /* Localization */,
-				95084DDF2184039300966399 /* Model */,
-				95084DE1218403A300966399 /* View */,
+				95084DDF2184039300966399 /* Models */,
+				95084DE1218403A300966399 /* Views */,
 				95084DE02184039700966399 /* SupportedFiles */,
-				95084DCD2184033C00966399 /* AppDelegate.swift */,
-				95084DD92184033E00966399 /* Info.plist */,
-				95E8458621CA2C490063CDAA /* InfoPlist.strings */,
 			);
 			path = DreamHackersForum;
 			sourceTree = "<group>";
 		};
-		95084DDF2184039300966399 /* Model */ = {
+		95084DDF2184039300966399 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				95084DE2218403C200966399 /* Forum.swift */,
-				9527846F218804BF00FBEB2A /* FontSize.swift */,
-				95F8470C21C652A30067F193 /* UserForums.swift */,
-				95668F93218575720009B99A /* db.xcdatamodel */,
-				95FF557821C756A00008F6E2 /* FavoriteThemes.swift */,
-				95FF557D21C7A8700008F6E2 /* CurrentForum.swift */,
-				95EBDF4D21C910C800D4BDB3 /* Theme.swift */,
-				95E8456C21C9FB040063CDAA /* Animate.swift */,
-				95E8457B21CA25200063CDAA /* Localization.swift */,
+				954D741C224CAD0100DAA3B1 /* UserForum.swift */,
+				954D741E224CAD1700DAA3B1 /* FavoriteTheme.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		95084DE02184039700966399 /* SupportedFiles */ = {
 			isa = PBXGroup;
 			children = (
-				95084DD42184033E00966399 /* Assets.xcassets */,
-				95084DD62184033E00966399 /* LaunchScreen.storyboard */,
+				95668F93218575720009B99A /* db.xcdatamodel */,
+				95084DD92184033E00966399 /* Info.plist */,
+				95E8458621CA2C490063CDAA /* InfoPlist.strings */,
 				9507792721CFB5C1001565F8 /* HomeIconShortcuts.swift */,
 			);
 			path = SupportedFiles;
 			sourceTree = "<group>";
 		};
-		95084DE1218403A300966399 /* View */ = {
+		95084DE1218403A300966399 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				95084DD12184033C00966399 /* Main.storyboard */,
@@ -161,7 +159,7 @@
 				95F8470721C64BF70067F193 /* UserForumsTableViewController.swift */,
 				95EBDF4321C8A15B00D4BDB3 /* FavoriteThemesViewController.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		95084DE821844CA600966399 /* Cell */ = {
@@ -175,6 +173,38 @@
 				95F8470521C64A5F0067F193 /* ForumCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		954D7417224CABEB00DAA3B1 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				95084DCD2184033C00966399 /* AppDelegate.swift */,
+				95084DE2218403C200966399 /* Forum.swift */,
+				9527846F218804BF00FBEB2A /* FontSize.swift */,
+				95F8470C21C652A30067F193 /* UserForums.swift */,
+				95FF557821C756A00008F6E2 /* FavoriteThemes.swift */,
+				95FF557D21C7A8700008F6E2 /* CurrentForum.swift */,
+				95EBDF4D21C910C800D4BDB3 /* Theme.swift */,
+				95E8456C21C9FB040063CDAA /* Animate.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		954D7418224CAC0600DAA3B1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				954D7419224CAC3900DAA3B1 /* Extensions+String.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		954D741B224CACB100DAA3B1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				95084DD42184033E00966399 /* Assets.xcassets */,
+				95084DD62184033E00966399 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		95E8457021CA093C0063CDAA /* Localization */ = {
@@ -333,19 +363,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				95F8470821C64BF70067F193 /* UserForumsTableViewController.swift in Sources */,
-				95E8457C21CA25200063CDAA /* Localization.swift in Sources */,
 				95668F9A2185BD2A0009B99A /* MainForumTableViewController.swift in Sources */,
 				95278470218804BF00FBEB2A /* FontSize.swift in Sources */,
 				95F8470621C64A5F0067F193 /* ForumCell.swift in Sources */,
 				95084DE721844CA300966399 /* MainForumTableViewCell.swift in Sources */,
 				95668F94218575720009B99A /* db.xcdatamodel in Sources */,
 				9507792821CFB5C1001565F8 /* HomeIconShortcuts.swift in Sources */,
+				954D741F224CAD1700DAA3B1 /* FavoriteTheme.swift in Sources */,
 				95FF557921C756A00008F6E2 /* FavoriteThemes.swift in Sources */,
 				95084DCE2184033C00966399 /* AppDelegate.swift in Sources */,
 				95668F8E21855B190009B99A /* SubForumTableViewController.swift in Sources */,
+				954D741D224CAD0100DAA3B1 /* UserForum.swift in Sources */,
 				95FF557C21C7A8260008F6E2 /* TopicTableViewController.swift in Sources */,
 				95EBDF4421C8A15B00D4BDB3 /* FavoriteThemesViewController.swift in Sources */,
 				95E8456D21C9FB040063CDAA /* Animate.swift in Sources */,
+				954D741A224CAC3900DAA3B1 /* Extensions+String.swift in Sources */,
 				95084DE3218403C200966399 /* Forum.swift in Sources */,
 				95668F922185727A0009B99A /* TopicCellTableViewCell.swift in Sources */,
 				95F8470D21C652A30067F193 /* UserForums.swift in Sources */,
@@ -522,7 +554,7 @@
 				CODE_SIGN_ENTITLEMENTS = DreamHackersForum/DreamHackersForum.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVFSZXK7VF;
-				INFOPLIST_FILE = DreamHackersForum/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DreamHackersForum/SupportedFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -543,7 +575,7 @@
 				CODE_SIGN_ENTITLEMENTS = DreamHackersForum/DreamHackersForum.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVFSZXK7VF;
-				INFOPLIST_FILE = DreamHackersForum/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DreamHackersForum/SupportedFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

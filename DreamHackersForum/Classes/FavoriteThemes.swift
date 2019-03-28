@@ -10,20 +10,6 @@ import Foundation
 import UIKit
 import CoreData
 
-struct FavoriteTheme {
-    var forumID:String
-    var id:String
-    var name:String
-    var url: String
-    
-    init(forumID:String,id:String,name:String,url:String) {
-        self.forumID = forumID
-        self.id = id
-        self.name = name
-        self.url = url
-    }
-}
-
 /**
  Получить избранные темы форума
  - Parameter id: ID родительского форума
