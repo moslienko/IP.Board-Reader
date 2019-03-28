@@ -8,5 +8,6 @@ target 'DreamHackersForum' do
   # Pods for DreamHackersForum
   pod 'SwiftSoup'
   pod 'JGProgressHUD'
+  pod 'RealmSwift'
 
 end
