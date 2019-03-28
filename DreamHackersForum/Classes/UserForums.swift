@@ -8,7 +8,9 @@
 
 import Foundation
 import UIKit
-import CoreData
+import RealmSwift
+
+fileprivate let realm = try! Realm()
 
 /**
  Создание рандомного идентификатора
@@ -28,38 +30,13 @@ func randomID (_ len : Int) -> NSString {
 
 
 /**
- Получить сохраненные форумы из CoreData
+ Получить сохраненные форумы из базы данных Realm
  - Returns: Сохраненные аудиокниги
  */
-func getUserForums(_ limit:Int = 0) -> [UserForum]{
-    var forum = [UserForum]()
+func getUserForums(_ limit:Int = 0) -> Results<UserForum>{
+    let forums = realm.objects(UserForum.self).sorted(byKeyPath: "name", ascending: true)
     
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return forum }
-    let managedContext = appDelegate.persistentContainer.viewContext
-    
-    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserForums")
-    fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "name", ascending: false)]
-    if limit != 0 {
-        //Для shortcuts
-        fetchRequest.fetchLimit = limit
-    }
-    do {
-        let result = try managedContext.fetch(fetchRequest)
-        for data in result as! [NSManagedObject] {
-            forum.append(UserForum(
-                id: data.value(forKey: "id") as! String,
-                name: data.value(forKey: "name") as! String,
-                url: data.value(forKey: "url") as! String
-            ))
-        }
-        
-        return forum
-        
-    } catch {
-        print("Failed")
-        return forum
-        
-    }
+    return forums
 }
 
 /**
@@ -67,27 +44,14 @@ func getUserForums(_ limit:Int = 0) -> [UserForum]{
  - Parameter forumData: Информация о главе
  - Returns: Статус выполнения операции
  */
-func saveForum(forumData:UserForum) -> Bool{
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false}
-    let managedContext = appDelegate.persistentContainer.viewContext
-    
-    let userEntity = NSEntityDescription.entity(forEntityName: "UserForums", in: managedContext)!
-    
-    let book = NSManagedObject(entity: userEntity, insertInto: managedContext)
-    
-    let url = URL(string: forumData.url)?.host
-    
-    book.setValue(forumData.id, forKeyPath: "id")
-    book.setValue(forumData.name, forKeyPath: "name")
-    book.setValue(url, forKeyPath: "url")
-    
+func saveForum(forumData:UserForum, callback: @escaping (Bool,Error?) -> ()) -> Void {
     do {
-        try managedContext.save()
-        return true
-        
+        try realm.write {
+            realm.add(forumData)
+            callback (true,nil)
+        }
     } catch let error as NSError {
-        print("Could not save. \(error), \(error.userInfo)")
-        return false
+        callback (false,error)
     }
 }
 
@@ -97,72 +61,38 @@ func saveForum(forumData:UserForum) -> Bool{
  - Parameter forumInfo: Данные о форуме
  - Returns: Статус выполнения операции
  */
-func updateForum(forumInfo:UserForum) -> Bool{
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
-    let managedContext = appDelegate.persistentContainer.viewContext
+func updateForum(id:String, url:String, callback: @escaping (Bool,Error?) -> ()) -> Void {
+    guard let forum = realm.objects(FavoriteTheme.self).filter("id == \(id)").first else  {
+        callback(false, nil)
+        return
+    }
     
-    let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "UserForums")
-    fetchRequest.predicate = NSPredicate(format: "id = %@", forumInfo.id)
-    
-    do
-    {
-        let forum = try managedContext.fetch(fetchRequest)
-        
-        if forum.count > 0 {
-            let objectUpdateForum = forum[0] as! NSManagedObject
-            objectUpdateForum.setValue(forumInfo.name, forKey: "name")
-            
-            do{
-                try managedContext.save()
-                return true
-            }
-            catch
-            {
-                print(error)
-                return false
-            }
+    do {
+        try realm.write {
+            forum.url = url
+            callback (true,nil)
         }
-        
+    } catch let error as NSError {
+        callback (false,error)
     }
-    catch
-    {
-        print(error)
-        return false
-    }
-    return false
 }
 
 /**
  Удалить форум
  - Parameter id: Идентификатор форума
  */
-func deleteForum(id:String) ->Bool{
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false}
-    let managedContext = appDelegate.persistentContainer.viewContext
+func deleteForum(id:String, callback: @escaping (Bool,Error?) -> ()) -> Void {
+    guard let forum = realm.objects(UserForum.self).filter("id == \(id)").first else  {
+        callback(false, nil)
+        return
+    }
     
-    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserForums")
-    fetchRequest.predicate = NSPredicate(format: "id = %@", id)
-    
-    do
-    {
-        let forum = try managedContext.fetch(fetchRequest)
-        if forum.count > 0 {
-            let objectToDelete = forum[0] as! NSManagedObject
-            managedContext.delete(objectToDelete)
-            do{
-                try managedContext.save()
-                return true
-            }
-            catch
-            {
-                print(error)
-                return false
-            }
+    do {
+        try realm.write {
+            realm.delete(forum)
+            callback (true,nil)
         }
+    } catch let error as NSError {
+        callback (false,error)
     }
-    catch
-    {
-        print(error)
-    }
-    return false
 }

@@ -22,7 +22,7 @@ IP.Board Reader - приложение, которое обеспечивает 
 
 В приложении применяются следующие вспомогательные фреймворки и библиотеки:
 
-`CoreData, JGProgressHUD, SafariServices, SwiftSoup`
+`JGProgressHUD, SafariServices, SwiftSoup, Realm`
 
 ###Скриншоты:
 

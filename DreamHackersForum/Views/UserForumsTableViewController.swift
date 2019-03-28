@@ -8,17 +8,22 @@
 
 import UIKit
 import JGProgressHUD
+import RealmSwift
 
 class UserForumsTableViewController: UITableViewController,UIViewControllerPreviewingDelegate {
     private let reuseIdentifier = "cellAllForums"
     
     @IBOutlet var backgroundTableView: UIView!
 
-    var userForums = [UserForum]() {
+
+    var userForums: Results<UserForum>! {
         didSet {
             self.tableView.reloadData()
             if userForums.count == 0 {
                 self.tableView.backgroundView = self.backgroundTableView
+            }
+            else {
+                 self.tableView.backgroundView = nil
             }
         }
     }
@@ -51,7 +56,7 @@ class UserForumsTableViewController: UITableViewController,UIViewControllerPrevi
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userForums.count
+        return userForums == nil ? 0 : userForums.count
     }
 
     
@@ -111,17 +116,24 @@ class UserForumsTableViewController: UITableViewController,UIViewControllerPrevi
                     let siteName = getSiteName(url: url!)
                 
                     if isIPBoardSite(url: url!){
-                        if saveForum(forumData: UserForum(id: randomID(10) as String, name: siteName, url: url!)) {
-                            self.userForums = getUserForums()
-                            hud.textLabel.text = "Forum added".localized;
-                            hud.indicatorView = JGProgressHUDSuccessIndicatorView.init()
-                            hud.show(in: self.view)
-                            hud.dismiss(afterDelay: 2.0)
-                        }
-                        else {
-                            hud.textLabel.text = "Error save forum".localized;
-
-                        }
+                        let forum = UserForum()
+                        forum.id = randomID(10) as String
+                        forum.name = siteName
+                        forum.url = url!
+                        
+                        saveForum(forumData: forum, callback: { (status, error) in
+                            if status {
+                                self.userForums = getUserForums()
+                                hud.textLabel.text = "Forum added".localized;
+                                hud.indicatorView = JGProgressHUDSuccessIndicatorView.init()
+                                hud.show(in: self.view)
+                                hud.dismiss(afterDelay: 2.0)
+                            }
+                            else {
+                                print ("Error: \(error)")
+                                hud.textLabel.text = "Error save forum".localized;
+                            }
+                        })
                     }
                     else {
                         hud.indicatorView = JGProgressHUDErrorIndicatorView.init()

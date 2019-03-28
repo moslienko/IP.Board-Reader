@@ -8,43 +8,19 @@
 
 import Foundation
 import UIKit
-import CoreData
+import RealmSwift
+
+fileprivate let realm = try! Realm()
 
 /**
  Получить избранные темы форума
  - Parameter id: ID родительского форума
  - Returns: Темы
  */
-func getFavoriteThemesForForum(id:String) -> [FavoriteTheme]{
-    var themes = [FavoriteTheme]()
-    
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return themes }
-    let managedContext = appDelegate.persistentContainer.viewContext
-    
-    let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "FavoriteThemes")
-    fetchRequest.predicate = NSPredicate(format: "forumID = %@", id)
-    let sort = NSSortDescriptor(key: "name", ascending: true)
-    fetchRequest.sortDescriptors = [sort]
-    
-    do
-    {
-        let themesArr = try managedContext.fetch(fetchRequest)
-        for theme in themesArr as! [NSManagedObject] {
-            themes.append(FavoriteTheme(
-                forumID: theme.value(forKey: "forumID") as! String,
-                id: theme.value(forKey: "id") as! String,
-                name: theme.value(forKey: "name") as! String,
-                url: theme.value(forKey: "url") as! String
-            ))
-        }
-        
-        return themes
-    }
-    catch
-    {
-        print(error)
-        return themes
-    }
+func getFavoriteThemesForForum(id:String) -> Results<FavoriteTheme>{
+    let themes = realm.objects(FavoriteTheme.self).filter("forumID = \(id)")
+
+    return themes
 }
 
 /**
@@ -52,25 +28,14 @@ func getFavoriteThemesForForum(id:String) -> [FavoriteTheme]{
  - Parameter themeData: Данные темы
  - Returns: Статус выполнения операции
  */
-func addThemeToFavorite(themeData:FavoriteTheme) -> Bool{
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false}
-    let managedContext = appDelegate.persistentContainer.viewContext
-    
-    let userEntity = NSEntityDescription.entity(forEntityName: "FavoriteThemes", in: managedContext)!
-    let theme = NSManagedObject(entity: userEntity, insertInto: managedContext)
-    
-    theme.setValue(themeData.forumID, forKeyPath: "forumID")
-    theme.setValue(themeData.id, forKeyPath: "id")
-    theme.setValue(themeData.name, forKeyPath: "name")
-    theme.setValue(themeData.url, forKeyPath: "url")
-    print ("theme:",theme)
+func addThemeToFavorite(theme:FavoriteTheme, callback: @escaping (Bool,Error?) -> ()) -> Void {
     do {
-        try managedContext.save()
-        return true
-        
+        try realm.write {
+            realm.add(theme)
+            callback (true,nil)
+        }
     } catch let error as NSError {
-        print("Could not save. \(error), \(error.userInfo)")
-        return false
+        callback (false,error)
     }
 }
 
@@ -78,35 +43,20 @@ func addThemeToFavorite(themeData:FavoriteTheme) -> Bool{
  Удалить тему из избранного
  - Parameter id: Идентификатор форума
  */
-func deleteFavoriteTheme(url:String) ->Bool{
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false}
-    let managedContext = appDelegate.persistentContainer.viewContext
-    
-    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteThemes")
-    fetchRequest.predicate = NSPredicate(format: "url = %@", url)
-    
-    do
-    {
-        let theme = try managedContext.fetch(fetchRequest)
-        if theme.count > 0 {
-            let objectToDelete = theme[0] as! NSManagedObject
-            managedContext.delete(objectToDelete)
-            do{
-                try managedContext.save()
-                return true
-            }
-            catch
-            {
-                print(error)
-                return false
-            }
+func deleteFavoriteTheme(url:String, callback: @escaping (Bool,Error?) -> ()) -> Void {
+    guard let theme = realm.objects(FavoriteTheme.self).filter("url == \(url)").first else  {
+        callback(false, nil)
+        return
+    }
+
+    do {
+        try realm.write {
+            realm.delete(theme)
+            callback (true,nil)
         }
+    } catch let error as NSError {
+        callback (false,error)
     }
-    catch
-    {
-        print(error)
-    }
-    return false
 }
 
 /**
@@ -114,55 +64,28 @@ func deleteFavoriteTheme(url:String) ->Bool{
  - Parameter url: URL темы
  */
 func isThemeAlreadyFavorite(url:String) -> Bool{
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false}
-    let managedContext = appDelegate.persistentContainer.viewContext
-    
-    let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavoriteThemes")
-    fetchRequest.predicate = NSPredicate(format: "url = %@", url)
-    
-        do {
-            let count  = try managedContext.count(for: fetchRequest)
-            return count > 0
-        }
-        catch {
-            print("Error: \(error)")
-            return false
-        }
+    return realm.objects(FavoriteTheme.self).filter("url == \(url)").count > 0
 }
-
 
 /**
  Удалить все избранные темы форума
  - Parameter id: ID родительского форума
  - Returns: Статус выполнения операции
  */
-func deleteAllFavoriteThemesForForum(id:String) ->Bool{
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false}
-    let managedContext = appDelegate.persistentContainer.viewContext
+func deleteAllFavoriteThemesForForum(id:String, callback: @escaping (Bool,Error?) -> ()) -> Void {
+    let themes = realm.objects(FavoriteTheme.self).filter("forumID == \(id)")
     
-    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteThemes")
-    fetchRequest.predicate = NSPredicate(format: "forumID = %@", id)
-    
-    do
-    {
-        let themes = try managedContext.fetch(fetchRequest)
-        
-        for theme in themes as! [NSManagedObject] {
-            managedContext.delete(theme)
+    if themes.count > 0 {
+        do {
+            try realm.write {
+                realm.delete(themes)
+                callback (true,nil)
+            }
+        } catch let error as NSError {
+            callback (false,error)
         }
-            do{
-                try managedContext.save()
-                return true
-            }
-            catch
-            {
-                print(error)
-                return false
-            }
     }
-    catch
-    {
-        print(error)
+    else {
+         callback(false, nil)
     }
-    return false
 }

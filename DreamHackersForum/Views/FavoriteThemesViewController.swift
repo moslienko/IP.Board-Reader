@@ -8,17 +8,18 @@
 
 import UIKit
 import JGProgressHUD
+import RealmSwift
 
 class FavoriteThemesViewController: UITableViewController,UIViewControllerPreviewingDelegate {
 
     private let reuseIdentifier = "cellFavorite"
     
-    var favoritesItem = [FavoriteTheme]() {
+    var favoritesItem: Results<FavoriteTheme>! {
         didSet {
             self.tableView.reloadData()
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.applyTheme()
@@ -66,22 +67,27 @@ class FavoriteThemesViewController: UITableViewController,UIViewControllerPrevie
             let alert = UIAlertController(title: "Delete".localized, message: "Delete theme from favorite?".localized, preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Yes".localized, style: .default , handler:{ (UIAlertAction)in
-                if deleteFavoriteTheme(url: self.favoritesItem[index.row].url) {
-                    self.favoritesItem = getFavoriteThemesForForum(id: CurrentForum.shared.id)
-                    
-                    let hud = JGProgressHUD(style: .dark)
-                    hud.indicatorView = JGProgressHUDSuccessIndicatorView.init()
-                    hud.textLabel.text = "Theme deleted".localized;
-                    hud.show(in: self.view)
-                    hud.dismiss(afterDelay: 2.0)
-                }
-                else {
-                    let hud = JGProgressHUD(style: .dark)
-                    hud.indicatorView = JGProgressHUDErrorIndicatorView.init()
-                    hud.textLabel.text = "Error delete theme".localized;
-                    hud.show(in: self.view)
-                    hud.dismiss(afterDelay: 2.0)
-                }
+                
+                
+                                deleteFavoriteTheme(url: self.favoritesItem[index.row].url, callback: { (status, error) in
+                                    if status {
+                                        self.favoritesItem = getFavoriteThemesForForum(id: CurrentForum.shared.id)
+                
+                                        let hud = JGProgressHUD(style: .dark)
+                                        hud.indicatorView = JGProgressHUDSuccessIndicatorView.init()
+                                        hud.textLabel.text = "Theme deleted".localized;
+                                        hud.show(in: self.view)
+                                        hud.dismiss(afterDelay: 2.0)
+                                    }
+                                    else {
+                                        print ("Error: \(error)")
+                                        let hud = JGProgressHUD(style: .dark)
+                                        hud.indicatorView = JGProgressHUDErrorIndicatorView.init()
+                                        hud.textLabel.text = "Error delete theme".localized;
+                                        hud.show(in: self.view)
+                                        hud.dismiss(afterDelay: 2.0)
+                                    }
+                                })
             }))
             
             alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler:{ (UIAlertAction)in }))

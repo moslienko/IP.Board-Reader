@@ -123,45 +123,51 @@ class TopicTableViewController: UITableViewController {
             
             if isThemeAlreadyFavorite(url: url) {
                 //Убрать
-                if deleteFavoriteTheme(url: url) {
-                    addFavoriteButton.image = UIImage(named: favoriteImg.noFav.rawValue)
-                    let hud = JGProgressHUD(style: .dark)
-                    hud.indicatorView = JGProgressHUDSuccessIndicatorView.init()
-                    hud.textLabel.text = "Theme deleted".localized;
-                    hud.show(in: self.view)
-                    hud.dismiss(afterDelay: 2.0)
-                   
-                }
-                else {
-                    let hud = JGProgressHUD(style: .dark)
-                    hud.indicatorView = JGProgressHUDErrorIndicatorView.init()
-                    hud.textLabel.text = "Error delete theme".localized;
-                    hud.show(in: self.view)
-                    hud.dismiss(afterDelay: 2.0)
-                }
+                deleteFavoriteTheme(url: url, callback: { (status, error) in
+                    if status {
+                        self.addFavoriteButton.image = UIImage(named: favoriteImg.noFav.rawValue)
+                        let hud = JGProgressHUD(style: .dark)
+                        hud.indicatorView = JGProgressHUDSuccessIndicatorView.init()
+                        hud.textLabel.text = "Theme deleted".localized;
+                        hud.show(in: self.view)
+                        hud.dismiss(afterDelay: 2.0)
+                    }
+                    else {
+                        print ("Error: \(error)")
+                        let hud = JGProgressHUD(style: .dark)
+                        hud.indicatorView = JGProgressHUDErrorIndicatorView.init()
+                        hud.textLabel.text = "Error delete theme".localized;
+                        hud.show(in: self.view)
+                        hud.dismiss(afterDelay: 2.0)
+                    }
+                })
             }
             else {
                 //Сохранить
-                if addThemeToFavorite(themeData: FavoriteTheme(
-                    forumID: CurrentForum.shared.id,
-                    id: randomID(10) as String,
-                    name: self.topic[0].title,
-                    url: url
-                )) {
-                    addFavoriteButton.image = UIImage(named: favoriteImg.alreadyFav.rawValue)
-                    let hud = JGProgressHUD(style: .dark)
-                    hud.indicatorView = JGProgressHUDSuccessIndicatorView.init()
-                    hud.textLabel.text = "Theme added to favorite".localized;
-                    hud.show(in: self.view)
-                    hud.dismiss(afterDelay: 2.0)
-                }
-                else {
-                    let hud = JGProgressHUD(style: .dark)
-                    hud.indicatorView = JGProgressHUDSuccessIndicatorView.init()
-                    hud.textLabel.text = "Error add theme to favorite".localized;
-                    hud.show(in: self.view)
-                    hud.dismiss(afterDelay: 2.0)
-                }
+                let themeData = FavoriteTheme()
+                themeData.forumID = CurrentForum.shared.id
+                themeData.id = randomID(10) as String
+                themeData.name = self.topic[0].title
+                themeData.url = url
+                
+                addThemeToFavorite(theme: themeData, callback: { (status, error) in
+                    if status {
+                        self.addFavoriteButton.image = UIImage(named: favoriteImg.alreadyFav.rawValue)
+                        let hud = JGProgressHUD(style: .dark)
+                        hud.indicatorView = JGProgressHUDSuccessIndicatorView.init()
+                        hud.textLabel.text = "Theme added to favorite".localized;
+                        hud.show(in: self.view)
+                        hud.dismiss(afterDelay: 2.0)
+                    }
+                    else {
+                        print ("Error: \(error)")
+                        let hud = JGProgressHUD(style: .dark)
+                        hud.indicatorView = JGProgressHUDSuccessIndicatorView.init()
+                        hud.textLabel.text = "Error add theme to favorite".localized;
+                        hud.show(in: self.view)
+                        hud.dismiss(afterDelay: 2.0)
+                    }
+                })
             }
         }
     }

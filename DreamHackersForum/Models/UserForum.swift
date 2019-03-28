@@ -5,15 +5,10 @@
 //  Created by Pavel Moslienko on 28/03/2019.
 //  Copyright © 2019 Pavel Moslienko. All rights reserved.
 //
+import RealmSwift
 
-struct UserForum {
-    var id:String
-    var name:String
-    var url:String
-    
-    init(id:String,name:String,url:String) {
-        self.id = id
-        self.name = name
-        self.url = url
-    }
+class UserForum: Object {
+    @objc dynamic var id = ""
+    @objc dynamic var name = ""
+    @objc dynamic var url = ""
 }

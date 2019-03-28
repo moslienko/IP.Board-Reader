@@ -27,6 +27,7 @@ func getHTMLContent(url:String) -> String {
     
     do {
         let html = try String(contentsOf: myURL!, encoding: .windowsCP1251)
+        
         return html
     }
     catch {
@@ -46,7 +47,7 @@ func getMainForumTopics() -> [mainTopics] {
     var topics = [mainTopics]()
 
     do {
-        let url = "http://\(CurrentForum.shared.url)"
+        let url = "URL:\(CurrentForum.shared.url)"
         
         let html = getHTMLContent(url: "\(String(describing: url))/lofiversion/index.php")
         
